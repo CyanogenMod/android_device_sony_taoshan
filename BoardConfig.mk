@@ -32,6 +32,17 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERY := true
 TARGET_NO_KERNEL := false
 
+# Inline-kernel building stuff
+TARGET_KERNEL_SOURCE := kernel/sony/taoshan
+TARGET_KERNEL_CONFIG := cm_taoshan_defconfig
+
+# QCOM/CAF hardware
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
+
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 # the androidboot.hardware has impact on loading .rc files
@@ -81,19 +92,4 @@ WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HAS_CFG80211_KERNEL3_4 := true
 
-# bluetooth is not enabled yet
-#BOARD_HAVE_BLUETOOTH := true
-ifeq ($(BOARD_HAVE_BLUETOOTH), true)
-    BOARD_HAVE_BLUETOOTH_BLUEZ := true
-    ifneq ($(BOARD_HAVE_BLUETOOTH_BLUEZ), true)
-        BOARD_HAVE_BLUETOOTH_QCOM := true
-        BLUETOOTH_HCI_USE_MCT := true
-    endif
-    BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-    BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
-endif
-
-# gps is not enabled yet
-#BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM) 
-#TARGET_NO_RPC := true
 
