@@ -45,6 +45,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+PRODUCT_PACKAGES += \
+    Torch
+
 PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/root/init.sony.rc:root/init.sony.rc \
     device/sony/c2105/rootdir/root/logo.rle:root/logo.rle \
@@ -66,3 +69,34 @@ PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/simple_remote_appkey.kl:system/usr/keylayout/simple_remote_appkey.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	
+# Display
+PRODUCT_PACKAGES += \
+    hwcomposer.msm8960 \
+    gralloc.msm8960 \
+    copybit.msm8960 \
+    memtrack.msm8960
+	
+# Audio
+PRODUCT_PACKAGES += \
+    alsa.msm8960 \
+    audio_policy.msm8960 \
+    audio.primary.msm8960 \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler \
+    tinymix
+	
+# Miscellaneous
+PRODUCT_PACKAGES += \
+    librs_jni \
+    com.android.future.usb.accessory
+	
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck
+	
+# WIFI MAC update
+PRODUCT_PACKAGES += \
+    mac-update
