@@ -77,6 +77,17 @@ PRODUCT_PACKAGES += \
     copybit.msm8960 \
     memtrack.msm8960
 	
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
+	
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.bt.hci_transport=smd
+	
+# BT
+PRODUCT_PACKAGES += \
+    hci_qcomm_init
+	
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
