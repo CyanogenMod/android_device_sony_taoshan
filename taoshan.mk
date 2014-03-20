@@ -49,6 +49,9 @@ PRODUCT_PACKAGES += \
     Torch
 
 PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
+ 
+PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/root/init.sony.rc:root/init.sony.rc \
     device/sony/c2105/rootdir/root/logo.rle:root/logo.rle \
     device/sony/c2105/rootdir/root/fstab.sony:root/fstab.sony \
