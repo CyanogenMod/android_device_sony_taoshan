@@ -131,6 +131,7 @@ PRODUCT_PACKAGES += \
 	
 # Filesystem management tools
 PRODUCT_PACKAGES += \
+	setup_fs \
     e2fsck
 	
 # WIFI MAC update
