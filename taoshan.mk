@@ -136,6 +136,41 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	setup_fs \
     e2fsck
+
+# RIL	
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.transmitpower=true \
+    persist.radio.apm_sim_not_pwdn=1 \
+    ro.telephony.ril.v3=qcomdsds \
+    DEVICE_PROVISIONED=1 \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so \
+    ril.subscription.types=NV,RUIM \
+    telephony.lteOnCdmaDevice=0 \
+    ro.use_data_netmgrd=true
+	
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=1 \
+    ro.gps.agps_provider=customized \
+    persist.gps.qmienabled=true \
+    persist.fuse_sdcard=true \
+    ro.cwm.enable_key_repeat=true \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 \
+    persist.timed.enable=true
+
+# Media	
+PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.audio.init=complete \
+    af.resampler.quality=255 \
+    persist.audio.fluence.mode=endfire \
+    persist.audio.vr.enable=false \
+    persist.audio.handset.mic=analog \
+    persist.audio.lowlatency.rec=false \
+    media.aac_51_output_enabled=true \
+    ro.qc.sdk.audio.ssr=false \
+    ro.qc.sdk.audio.fluencetype=none \
+    lpa.decode=true \
+    lpa.use-stagefright=true
 	
 # WIFI MAC update
 PRODUCT_PACKAGES += \
