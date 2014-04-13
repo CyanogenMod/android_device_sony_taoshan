@@ -70,6 +70,11 @@ USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/sony/c2105/egl.cfg
 ENABLE_WEBGL := true
 
+# Recovery
+BOARD_CUSTOM_GRAPHICS := ../../../device/sony/taoshan/recovery/graphics/graphics.c
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
 # audio is enabled
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
