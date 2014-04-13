@@ -108,4 +108,29 @@ WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HAS_CFG80211_KERNEL3_4 := true
 
+BOARD_SEPOLICY_DIRS += \
+    device/sony/taoshan/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    netd.te \
+    rild.te \
+    surfaceflinger.te \
+    system.te \
+    ueventd.te \
+    wpa_supplicant.te
+
 
