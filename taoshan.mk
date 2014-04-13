@@ -124,6 +124,8 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 	
+PRODUCT_PACKAGES += libtime_genoff
+	
 # Miscellaneous
 PRODUCT_PACKAGES += \
     librs_jni \
