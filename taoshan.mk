@@ -52,11 +52,11 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
  
 PRODUCT_COPY_FILES += \
-    device/sony/c2105/rootdir/root/init.sony.rc:root/init.sony.rc \
+    device/sony/c2105/rootdir/root/init.qcom.rc:root/init.qcom.rc \
     device/sony/c2105/rootdir/root/logo.rle:root/logo.rle \
-    device/sony/c2105/rootdir/root/fstab.sony:root/fstab.sony \
-    device/sony/c2105/rootdir/root/ueventd.sony.rc:root/ueventd.sony.rc \
-    device/sony/c2105/rootdir/root/init.sony.usb.rc:root/init.sony.usb.rc \
+    device/sony/c2105/rootdir/root/fstab.qcom:root/fstab.qcom \
+    device/sony/c2105/rootdir/root/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    device/sony/c2105/rootdir/root/init.qcom.usb.rc:root/init.qcom.usb.rc \
     device/sony/c2105/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/sony/c2105/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/sony/c2105/rootdir/system/etc/gps.conf:system/etc/gps.conf \
