@@ -95,6 +95,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     hci_qcomm_init
 	
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/root/sbin/wait4tad_static:root/sbin/wait4tad_static \
+    $(LOCAL_PATH)/rootdir/root/sbin/tad_static:root/sbin/tad_static
+	
 # Audio
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
