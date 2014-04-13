@@ -87,6 +87,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
 	
+PRODUCT_PROPERTY_OVERRIDES += \	
+	 persist.sys.strictmode.visual=0 \
+     persist.sys.strictmode.disable=1
+	
 # BT
 PRODUCT_PACKAGES += \
     hci_qcomm_init
