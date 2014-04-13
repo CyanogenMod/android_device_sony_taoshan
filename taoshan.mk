@@ -48,30 +48,43 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_PACKAGES += \
     Torch
 
+# IRSC config
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/rootdir/system/etc/sec_config:system/etc/sec_config
  
+# Init scripts and logo 
 PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/root/init.qcom.rc:root/init.qcom.rc \
     device/sony/c2105/rootdir/root/logo.rle:root/logo.rle \
     device/sony/c2105/rootdir/root/fstab.qcom:root/fstab.qcom \
     device/sony/c2105/rootdir/root/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    device/sony/c2105/rootdir/root/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    device/sony/c2105/rootdir/root/init.qcom.usb.rc:root/init.qcom.usb.rc
+
+# Camcorder	
+PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/sony/c2105/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/sony/c2105/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml 
+	
+# GPS and audio
+PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/etc/gps.conf:system/etc/gps.conf \
     device/sony/c2105/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/sony/c2105/rootdir/system/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
+    device/sony/c2105/rootdir/system/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar
+	
+# NFC and thermal daemon	
+PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    device/sony/c2105/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
-    device/sony/c2105/rootdir/system/etc/vold.fstab:system/etc/vold.fstab \
+    device/sony/c2105/rootdir/system/etc/thermald.conf:system/etc/thermald.conf 
+
+# Key layouts	
+PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
     device/sony/c2105/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/cyttsp3-i2c.kl:system/usr/keylayout/cyttsp3-i2c.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/msm8930-sitar-snd-card_Button_Jack.kl:system/usr/keylayout/msm8930-sitar-snd-card_Button_Jack.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/simple_remote_appkey.kl:system/usr/keylayout/simple_remote_appkey.kl \
-    device/sony/c2105/rootdir/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl 
 	
 # Display
 PRODUCT_PACKAGES += \
