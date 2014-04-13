@@ -21,6 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit Sony common (and qcom-common) files.
 $(call inherit-product, device/sony/common/resources.mk)
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
+$(call inherit-product, vendor/sony/taoshan/taoshan-vendor.mk)
 
 # Copy extra files
 PRODUCT_COPY_FILES += \
