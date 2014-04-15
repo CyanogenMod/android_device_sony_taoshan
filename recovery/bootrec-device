@@ -1,0 +1,13 @@
+#!/sbin/busybox sh
+
+export BOOTREC_EVENT_NODE="/dev/input/event0 c 13 64"
+export BOOTREC_EVENT="/dev/input/event0"
+export BOOTREC_CONTROL_LED="/sys/class/led/fih_led/control"
+export BOOTREC_RED_LED_ON="01 0 1"
+export BOOTREC_GREEN_LED_ON="01 1 1"
+export BOOTREC_BLUE_LED_ON="01 2 1"
+export BOOTREC_RED_LED_OFF="01 0 0"
+export BOOTREC_GREEN_LED_OFF="01 1 0"
+export BOOTREC_BLUE_LED_OFF="01 2 0"
+export BOOTREC_FOTA_NODE="/dev/block/mmcblk0p23 b 179 23"
+export BOOTREC_FOTA="/dev/block/mmcblk0p23"

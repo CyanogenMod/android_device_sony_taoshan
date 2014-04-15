@@ -25,6 +25,9 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 # Inherit CM common Phone stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
+TARGET_SCREEN_HEIGHT := 854
+TARGET_SCREEN_WIDTH := 480
+
 # Build fingerprints
 PRODUCT_BUILD_PROP_OVERRIDES += 
     PRODUCT_NAME=c2105 \
