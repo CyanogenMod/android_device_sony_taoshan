@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-$(call inherit-product, device/sony/taoshan/full_taoshan.mk)
+$(call inherit-product, device/sony/taoshan/taoshan.mk)
 
 
 # Inherit CM common GSM stuff.
