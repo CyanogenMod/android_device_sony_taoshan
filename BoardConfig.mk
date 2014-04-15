@@ -36,7 +36,7 @@ TARGET_RECOVERY_FSTAB := device/sony/taoshan/rootdir/root/fstab.sony
 RECOVERY_FSTAB_VERSION := 2
 
 # Inline-kernel building stuff
-TARGET_KERNEL_SOURCE := kernel/sony/taoshan
+TARGET_KERNEL_SOURCE := kernel/sony/msm8930
 TARGET_KERNEL_CONFIG := cm_taoshan_defconfig
 
 # QCOM/CAF hardware

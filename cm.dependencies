@@ -1,0 +1,15 @@
+[
+  {
+    "repository": "android_device_sony_common",
+    "target_path": "device/sony/common"
+  },
+  {
+    "repository": "android_device_sony_qcom-common",
+    "target_path": "device/sony/qcom-common"
+  },
+  {
+    "repository": "android_kernel_sony_msm8930",
+    "target_path": "kernel/sony/msm8930"
+  }
+
+]
