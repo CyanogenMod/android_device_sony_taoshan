@@ -58,7 +58,7 @@ on init
 
 
 on fs
-    mount_all fstab.sony
+    mount_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -155,6 +155,9 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+	exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
+    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
+	
 
 
 
@@ -420,7 +423,7 @@ on property:ro.data.large_tcp_window_size=true
 service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dddd \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -d \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -433,7 +436,7 @@ service p2p_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
 
 service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -O/data/misc/wifi/sockets -dddd \
+    -O/data/misc/wifi/sockets -d \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -543,6 +546,44 @@ service cci_tatest /system/bin/cci_tatest
     class main
     user root
     oneshot
+	
+service qcom-sh /system/bin/sh /init.qcom.sh
+    class late_start
+    user root
+    oneshot
+
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start qcom-post-boot
+	
+service ppd /system/bin/mm-pp-daemon
+    class late_start
+    user system
+    socket pps stream 0660 system system graphics
+    group system graphics
+	
+service battery_monitor /system/bin/battery_monitor
+    user system
+    group system
+    disabled
+
+service profiler_daemon /system/bin/profiler_daemon
+    class late_start
+    user root
+    group root
+    disabled
+	
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+    class late_start
+    user root
+    group system qcom_oncrpc
+    disabled
+    oneshot
 
 service tad_static /sbin/tad_static /dev/block/mmcblk0p1 0,16
     class trimarea
@@ -579,11 +620,6 @@ service qseecomd /system/bin/qseecomd
    class late_start
    user system
    group system
-   
- service qrngd /system/bin/qrngd -f
-      class main
-      user root
-      group root
    
 service time_daemon /system/bin/time_daemon
      class late_start
