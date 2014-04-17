@@ -155,6 +155,7 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+	
 
 
 
@@ -542,6 +543,13 @@ service updatemiscta /system/bin/updatemiscta
 service cci_tatest /system/bin/cci_tatest
     class main
     user root
+    oneshot
+	
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+    class late_start
+    user root
+    group system qcom_oncrpc
+    disabled
     oneshot
 
 service tad_static /sbin/tad_static /dev/block/mmcblk0p1 0,16
