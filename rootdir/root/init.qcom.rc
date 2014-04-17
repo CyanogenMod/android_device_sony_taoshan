@@ -32,37 +32,27 @@ on early-init
 
 on init
     mkdir /persist 0771 system system
-
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage 0050 root sdcard_r
-    mkdir /storage/removable 0555 root root
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/emulated/legacy 0555 root root
-
+	chmod 0701 /mnt/media_rw
+    mkdir /storage 0775 system system
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0775 system system
+    mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/usbdisk 0775 system system
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # secondary external storage
-    mkdir /storage/sdcard1 0700 root root
-    symlink /storage/sdcard1 /sdcard1
-    symlink /storage/sdcard1 /ext_card
+    export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-    # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /storage/sdcard1 /storage/removable/sdcard1
+    # for backwards compatibility
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard1 /ext_card
+    symlink /storage/sdcard1 /mnt/ext_card
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
-
-
-
-on early-fs
-    # none
+    symlink /dev/socket /tmp
 
 
 
@@ -298,29 +288,17 @@ on boot
     write /sys/module/rpm_resources/enable_low_power/vdd_mem 1
     write /sys/module/pm_8x60/modes/cpu0/retention/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/retention/idle_enabled 1
-    write /sys/module/pm_8x60/modes/cpu2/retention/idle_enabled 1
-    write /sys/module/pm_8x60/modes/cpu3/retention/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/power_collapse/suspend_enabled 1
-    write /sys/module/pm_8x60/modes/cpu2/power_collapse/suspend_enabled 1
-    write /sys/module/pm_8x60/modes/cpu3/power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/pm_8x60/modes/cpu2/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/suspend_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
-    write /sys/module/pm_8x60/modes/cpu2/standalone_power_collapse/idle_enabled 1
-    write /sys/module/pm_8x60/modes/cpu3/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
@@ -336,25 +314,15 @@ on boot
     chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 384000
     chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
     chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-    chown system /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
-    chown system /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-    chown system /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
     write /sys/module/msm_thermal/core_control/enabled 1
     chown root system /sys/devices/system/cpu/mfreq
     chmod 220 /sys/devices/system/cpu/mfreq
     chown root system /sys/devices/system/cpu/cpu1/online
-    chown root system /sys/devices/system/cpu/cpu2/online
-    chown root system /sys/devices/system/cpu/cpu3/online
     chmod 664 /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu2/online
-    chmod 664 /sys/devices/system/cpu/cpu3/online
     # set DCVS parameters for CPU
     write /sys/module/msm_dcvs/cores/cpu0/slack_time_max_us 40000
     write /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us 40000
@@ -368,18 +336,6 @@ on boot
     write /sys/module/msm_dcvs/cores/cpu1/em_win_size_max_us 500000
     write /sys/module/msm_dcvs/cores/cpu1/slack_mode_dynamic 0
     write /sys/module/msm_dcvs/cores/cpu1/disable_pc_threshold 1000000
-    write /sys/module/msm_dcvs/cores/cpu2/slack_time_max_us 25000
-    write /sys/module/msm_dcvs/cores/cpu2/slack_time_min_us 25000
-    write /sys/module/msm_dcvs/cores/cpu2/em_win_size_min_us 100000
-    write /sys/module/msm_dcvs/cores/cpu2/em_win_size_max_us 500000
-    write /sys/module/msm_dcvs/cores/cpu2/slack_mode_dynamic 0
-    write /sys/module/msm_dcvs/cores/cpu2/disable_pc_threshold 1000000
-    write /sys/module/msm_dcvs/cores/cpu3/slack_time_max_us 25000
-    write /sys/module/msm_dcvs/cores/cpu3/slack_time_min_us 25000
-    write /sys/module/msm_dcvs/cores/cpu3/em_win_size_min_us 100000
-    write /sys/module/msm_dcvs/cores/cpu3/em_win_size_max_us 500000
-    write /sys/module/msm_dcvs/cores/cpu3/slack_mode_dynamic 0
-    write /sys/module/msm_dcvs/cores/cpu3/disable_pc_threshold 1000000
     # set DCVS parameters for GPU
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_max_us 20000
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_min_us 20000
@@ -559,28 +515,17 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service sdcard /system/bin/sdcard -d /data/media /mnt/shell/emulated 1023 1023
+service fuse_sdcard0 /system/bin/sdcard -u 2800 -g 2800 -w 2800 /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
 
 service fuse_sdcard1 /system/bin/sdcard -d -w 1023 /mnt/media_rw/sdcard1 /storage/sdcard1 1023 1023
     class late_start
     disabled
-
-on property:ro.fuse_sdcard=true
-    start sdcard
-
-# Binding fuse mount point to /storage/emulated/legacy
-on property:init.svc.sdcard=running
-    wait /mnt/shell/emulated/0
-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
-# This will make sure that sdcard service starts as late_start.
-on nonencrypted
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-
-on property:vold.decrypt=trigger_restart_framework
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+	
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 service charger /charger
     class charger
