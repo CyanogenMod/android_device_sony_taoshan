@@ -168,7 +168,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=0 \
     ro.gps.agps_provider=customized \
     persist.gps.qmienabled=true \
-    persist.fuse_sdcard=true \
     ro.cwm.enable_key_repeat=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
