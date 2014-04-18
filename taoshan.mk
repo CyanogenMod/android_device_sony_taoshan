@@ -71,6 +71,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/thermald-8930.conf:system/etc/thermald-8930.conf
+	
+# TWRP
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Key layouts	
 PRODUCT_COPY_FILES += \
