@@ -136,6 +136,10 @@ PRODUCT_PACKAGES += \
     copybit.msm8960 \
     libqdMetaData \
     memtrack.msm8960
+	
+# Recovery
+PRODUCT_PACKAGES += \
+    extract_elf_ramdisk
 
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
