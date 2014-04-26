@@ -50,6 +50,15 @@ fi
 # timing critical tasks in a separate process to
 # prevent slowdown at boot.
 
+# Run modem link script
+if [ -f /system/etc/init.qcom.modem_links.sh ]; then
+  /system/bin/sh /system/etc/init.qcom.modem_links.sh
+fi
+
+# Run mdm link script
+if [ -f /system/etc/init.qcom.mdm_links.sh ]; then
+  /system/bin/sh /system/etc/init.qcom.mdm_links.sh
+fi
 # Run thermal script
 if [ -f /system/etc/init.qcom.thermal_conf.sh ]; then
   /system/bin/sh /system/etc/init.qcom.thermal_conf.sh
