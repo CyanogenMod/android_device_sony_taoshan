@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-import init.sony.usb.rc
+import init.qcom.usb.rc
 
 
 
