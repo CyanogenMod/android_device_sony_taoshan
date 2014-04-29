@@ -46,6 +46,7 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	busybox echo 255 > ${BOOTREC_LED_RED}
 	busybox echo 100 > ${BOOTREC_LED_GREEN}
 	busybox echo 0 > ${BOOTREC_LED_BLUE}
+	busybox echo 100 > ${BOOTREC_VIBRATOR}
 	# recovery ramdisk
 	busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
 	busybox mount -o remount,rw /
