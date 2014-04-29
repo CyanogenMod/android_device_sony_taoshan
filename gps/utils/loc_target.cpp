@@ -44,6 +44,7 @@
 #define MPQ8064_ID_1 "130"
 #define MSM8930_ID_1 "142"
 #define MSM8930_ID_2 "116"
+#define MSM8930_ID_3 "118"
 #define APQ8030_ID_1 "157"
 #define APQ8074_ID_1 "184"
 
@@ -196,7 +197,9 @@ unsigned int loc_get_target(void)
         else if( (!memcmp(rd_id, MSM8930_ID_1, LENGTH(MSM8930_ID_1))
                    && IS_STR_END(rd_id[LENGTH(MSM8930_ID_1)])) ||
                   (!memcmp(rd_id, MSM8930_ID_2, LENGTH(MSM8930_ID_2))
-                   && IS_STR_END(rd_id[LENGTH(MSM8930_ID_2)])) )
+                   && IS_STR_END(rd_id[LENGTH(MSM8930_ID_2)])) ||
+                  (!memcmp(rd_id, MSM8930_ID_3, LENGTH(MSM8930_ID_3))
+                   && IS_STR_END(rd_id[LENGTH(MSM8930_ID_3)])) )
              gTarget = TARGET_MSM_NO_SSC;
         else
              gTarget = TARGET_UNKNOWN;
