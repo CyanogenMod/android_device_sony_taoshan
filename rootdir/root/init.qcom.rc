@@ -32,7 +32,7 @@ on early-init
 
 on init
     mkdir /persist 0771 system system
-	chmod 0701 /mnt/media_rw
+    # See storage config details at http://source.android.com/tech/storage/
     mkdir /storage 0775 system system
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
@@ -53,8 +53,6 @@ on init
     symlink /storage/usbdisk /mnt/usbdisk
 
     symlink /dev/socket /tmp
-
-
 
 
 on fs
@@ -81,7 +79,7 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 	
-	mount vfat /dev/block/platform/msm_sdcc.1/by-name/sdcard /storage/sdcard0 nosuid nodev barrier=1
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/sdcard /storage/sdcard0 nosuid nodev barrier=1
 
 
     # FOTA support
@@ -520,15 +518,15 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service fuse_sdcard0 /system/bin/sdcard -u 2800 -g 2800 -w 2800 /mnt/media_rw/sdcard0 /storage/sdcard0
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
 
-service fuse_sdcard1 /system/bin/sdcard -d -w 1023 /mnt/media_rw/sdcard1 /storage/sdcard1 1023 1023
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 	
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
