@@ -84,6 +84,8 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+	
+	mount vfat /dev/block/platform/msm_sdcc.1/by-name/sdcard /storage/sdcard0 nosuid nodev barrier=1
 
 
     # FOTA support
@@ -102,11 +104,7 @@ on post-fs
 
 
 on post-fs-data
-    # msm specific files that need to be created on /data
-
-    mkdir /data/media 0775 media_rw media_rw
-
-    # Create the directories used by the Wireless subsystem
+	# Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
@@ -136,6 +134,14 @@ on post-fs-data
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
+	
+	#Create directories for gpsone_daemon services
+    mkdir /data/misc/gpsone_d 0770 system gps
+
+    #Create directories for Location services
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/xtwifi 0770 gps gps
 
     #Create directory for FOTA
     mkdir /data/fota 0771

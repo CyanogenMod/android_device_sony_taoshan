@@ -152,7 +152,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8960 \
     gps.conf \
-    sap.conf
+    sap.conf \
+    izat.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
@@ -166,8 +167,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=0 \
-    ro.gps.agps_provider=customized \
-    persist.gps.qmienabled=true \
     ro.cwm.enable_key_repeat=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
@@ -179,13 +178,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=255 \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
-    persist.audio.handset.mic=analog \
+    persist.audio.handset.mic=digital \
     persist.audio.lowlatency.rec=false \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
     ro.qc.sdk.audio.fluencetype=none \
     lpa.decode=true \
     lpa.use-stagefright=true
+	
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.gps.qmienabled=true \
+    ro.qc.sdk.izat.premium_enabled=1 \
+    ro.qc.sdk.izat.service_mask=0x5 \
+    persist.gps.qc_nlp_in_use=0 \
+    ro.gps.agps_provider=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
