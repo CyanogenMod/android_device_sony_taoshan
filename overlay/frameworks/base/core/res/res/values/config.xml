@@ -283,4 +283,7 @@
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">false</bool>
+	
+	<!-- LED Flashlight -->
+    <bool name="config_enableTorch">true</bool>
 </resources>
