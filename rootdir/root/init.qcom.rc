@@ -156,6 +156,9 @@ on early-boot
 	exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
 	
+on charger
+	write /sys/module/msm_fb/parameters/align_buffer 0
+	
 
 
 
