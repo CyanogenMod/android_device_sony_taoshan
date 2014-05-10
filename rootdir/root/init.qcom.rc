@@ -367,6 +367,8 @@ on boot
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
 	# Hardware tunables
 	chown root system /sys/class/timed_output/vibrator/level
+	chmod 0664 /sys/class/timed_output/vibrator/level
+	restorecon /sys/class/timed_output/vibrator/level
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
 
