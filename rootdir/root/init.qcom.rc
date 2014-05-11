@@ -158,6 +158,11 @@ on early-boot
 	
 on charger
 	write /sys/module/msm_fb/parameters/align_buffer 0
+	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
+	write /sys/devices/system/cpu/cpu1/online 0
 	
 
 
