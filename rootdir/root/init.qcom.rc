@@ -641,10 +641,7 @@ service wcnss-service /system/bin/wcnss_service
      user system
      group system wifi
      oneshot
-	 
-# Set performance profile
-   setprop sys.perf.profile 1
-   start thermald
+
 
 # CM Performance Profiles
 
