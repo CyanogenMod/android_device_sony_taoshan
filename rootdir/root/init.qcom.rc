@@ -126,14 +126,6 @@ on post-fs-data
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
-	
-	#Create directories for gpsone_daemon services
-    mkdir /data/misc/gpsone_d 0770 system gps
-
-    #Create directories for Location services
-    mkdir /data/misc/location 0770 gps gps
-    mkdir /data/misc/location/mq 0770 gps gps
-    mkdir /data/misc/location/xtwifi 0770 gps gps
 
     #Create directory for FOTA
     mkdir /data/fota 0771
@@ -266,6 +258,9 @@ on boot
     chmod 0664 /sys/devices/virtual/input/input1/als_power_state
     chmod 0664 /sys/devices/virtual/input/input1/prox_power_state
     chmod 0664 /sys/devices/virtual/input/input1/delay
+
+    chown system compass /data/misc/sensor
+
     
     chmod 0664 /sys/devices/virtual/input/input1/lux_ga
     chmod 0664 /sys/devices/virtual/input/input0/prox_piltl
@@ -287,8 +282,16 @@ on boot
     write /sys/devices/i2c-3/3-005b/update_fw 1
     start qcamerasvr
 
+    #Create directories for gpsone_daemon services
+    mkdir /data/misc/gpsone_d 0770 system gps
 
+    #Create directories for QuIPS
+    mkdir /data/misc/quipc 0770 gps system
 
+    #Create directories for Location services
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/xtwifi 0770 gps gps
 
 #on post-boot
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
@@ -384,6 +387,8 @@ on boot
     mkdir /data/mpdecision 0770 root system
     start mpdecision
 
+    # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
 
 
 
@@ -417,10 +422,11 @@ on property:bluetooth.hciattach=true
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
+# QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps
+    group radio audio bluetooth gps qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -625,6 +631,12 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
    class late_start
    user camera
    group camera system inet input graphics net_bt_stack
+
+service sensord /system/bin/sensord
+    user system
+    group compass misc input
+    class main
+    oneshot
 
 service qseecomd /system/bin/qseecomd
    class late_start
