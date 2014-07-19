@@ -193,8 +193,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true \
-    lpa.use-stagefright=true
+    lpa.decode=true 
 
 # GPS-2	
 PRODUCT_PROPERTY_OVERRIDES += \
