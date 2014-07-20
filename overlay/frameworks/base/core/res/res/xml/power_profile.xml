@@ -54,6 +54,9 @@
         <value>918000</value>
         <value>972000</value>
         <value>1026000</value>
+        <value>1080000</value>
+        <value>1134000</value>
+        <value>1188000</value>
     </array>
     <item name="cpu.idle">2.3</item>
     <item name="cpu.awake">42</item>
