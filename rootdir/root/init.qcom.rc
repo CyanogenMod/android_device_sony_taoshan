@@ -96,14 +96,14 @@ on post-fs
 
 
 on post-fs-data
-	# Create the directories used by the Wireless subsystem
+    # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp system /data/misc/dhcp
 	
-	# Create /data/time folder for time-services
+    # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
     # Create directory used by audio subsystem
@@ -124,14 +124,14 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
 
-    #Create directory for FOTA
+    # Create directory for FOTA
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
+    # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
 
@@ -145,23 +145,23 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-	exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
+    exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
 	
 on charger
-	write /sys/module/msm_fb/parameters/align_buffer 0
-	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
+    write /sys/module/msm_fb/parameters/align_buffer 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "powersave"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
-	write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu1/online 0
 	
 
 
 
 
 on boot
-	chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
+    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
@@ -182,7 +182,7 @@ on boot
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
 
-    #Create QMUX deamon socket area
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -192,7 +192,7 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    #Remove SUID bit for iproute2 ip tool
+    # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
@@ -205,10 +205,10 @@ on boot
     chmod 400 /sys/class/graphics/fb1/msm_fb_fps_level
     chmod 400 /sys/class/graphics/fb2/msm_fb_fps_level
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
+    # For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
@@ -254,7 +254,7 @@ on boot
     chmod 0600 /dev/pn544
     chown nfc nfc /dev/pn544
 
-    # sensor porting
+    # Sensor porting
     chmod 0664 /sys/devices/virtual/input/input1/als_power_state
     chmod 0664 /sys/devices/virtual/input/input1/prox_power_state
     chmod 0664 /sys/devices/virtual/input/input1/delay
@@ -277,18 +277,18 @@ on boot
 
     start akmd
 
-    # start camera server
+    # Start camera server
     write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
     write /sys/devices/i2c-3/3-005b/update_fw 1
     start qcamerasvr
 
-    #Create directories for gpsone_daemon services
+    # Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
 
-    #Create directories for QuIPS
+    # Create directories for QuIPS
     mkdir /data/misc/quipc 0770 gps system
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
@@ -373,14 +373,14 @@ on boot
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
-	# Hardware tunables
-	chown root system /sys/class/timed_output/vibrator/level
-	chmod 0664 /sys/class/timed_output/vibrator/level
-	restorecon /sys/class/timed_output/vibrator/level
+    # Hardware tunables
+    chown root system /sys/class/timed_output/vibrator/level
+    chmod 0664 /sys/class/timed_output/vibrator/level
+    restorecon /sys/class/timed_output/vibrator/level
 	
-	# Increase read_ahead
-	write /sys/block/mmcblk0/bdi/read_ahead_kb 256
-	write /sys/block/mmcblk1/bdi/read_ahead_kb 256
+    # Increase read_ahead
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 256
+    write /sys/block/mmcblk1/bdi/read_ahead_kb 256
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
 
