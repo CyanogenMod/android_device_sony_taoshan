@@ -16,6 +16,9 @@
 
 LOCAL_PATH := $(call my-dir)
 
+# To suppress compiler warnings for unused variables/functions used for debug features etc.
+LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-function
+
 ifeq ($(BOARD_VENDOR_PLATFORM),taoshan)
     include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
