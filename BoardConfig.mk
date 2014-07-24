@@ -60,6 +60,9 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_KERNEL_SOURCE := kernel/sony/msm8930
 TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 
+# Custom RIL class
+BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
+
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_QCOM_AUDIO_VARIANT := caf
