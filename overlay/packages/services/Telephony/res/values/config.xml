@@ -31,8 +31,8 @@
 
     <!-- Flag indicating if dtmf tone type is enabled -->
     <bool name="dtmf_type_enabled">true</bool>
-	
-	<!-- This device implements a noise suppression device for in call audio-->
+
+    <!-- This device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">true</bool>
 
     <!-- Determine whether we should show the "listen for instructions" screen after
