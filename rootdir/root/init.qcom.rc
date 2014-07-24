@@ -78,6 +78,16 @@ on fs
     exec /sbin/fota-ua c
     exec /system/bin/taimport
 
+on boot
+    # QCOM Sensors
+    mkdir /data/system 0775 system system
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
+    write /data/system/sensors/settings 1
+    chmod 664 /data/system/sensors/settings
+    chown system /data/system/sensors/settings
+    start sensors   
+
 on post-fs
     mkdir /dev/socket/suntory 0755 system system
 
@@ -612,11 +622,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
    user camera
    group camera system inet input graphics net_bt_stack
 
-service sensord /system/bin/sensord
-    user system
-    group compass misc input
-    class main
-    oneshot
+service sensors /system/bin/sensors.qcom
+    class late_start
+    user root
+    group root
+    disabled
 
 service qseecomd /system/bin/qseecomd
    class late_start
