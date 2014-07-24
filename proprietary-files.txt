@@ -12,6 +12,7 @@ bin/qmuxd
 bin/rmt_storage
 bin/akmd8963
 bin/rild
+bin/sensors.qcom
 bin/ta_qmi_service
 bin/time_daemon
 bin/cci_tatest
