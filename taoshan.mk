@@ -69,7 +69,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.thermal_conf.sh:system/etc/init.qcom.thermal_conf.sh 
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.thermal_conf.sh:system/etc/init.qcom.thermal_conf.sh
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
@@ -78,12 +78,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/thermald-8930.conf:system/etc/thermald-8930.conf
-	
+
 # TWRP
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
-# Key layouts	
+# Key layouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
     $(LOCAL_PATH)/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
@@ -193,9 +193,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true 
+    lpa.decode=true
 
-# GPS-2	
+# GPS-2
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qmienabled=true \
     ro.gps.agps_provider=1
@@ -206,7 +206,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.allow.mock.location=0 \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
-    persist.service.debuggable=1 
+    persist.service.debuggable=1
 
 PRODUCT_GMS_CLIENTID_BASE := android-sonyericsson
 
