@@ -16,9 +16,6 @@
 
 import init.qcom.usb.rc
 
-
-
-
 on early-init
     mkdir /firmware 0771 system system
     symlink /data/tombstones /tombstones
@@ -26,9 +23,6 @@ on early-init
     mkdir /ftmd 0771 root system
     mkdir /ftma 0771 system system
     mkdir /lta-label 0771 system system
-
-
-
 
 on init
     mkdir /persist 0771 system system
@@ -54,7 +48,6 @@ on init
 
     symlink /dev/socket /tmp
 
-
 on fs
     mount_all fstab.qcom
 
@@ -70,7 +63,7 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
     exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/LTALabel
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev barrier=1
-	
+
     exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/ftma
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/ftma /ftma nosuid nodev barrier=1
     chmod 0750 /ftma/cci-flex.sh
@@ -79,21 +72,14 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
-
     # FOTA support
     class_start trimarea
     exec /sbin/wait4tad_static
     exec /sbin/fota-ua c
     exec /system/bin/taimport
 
-
-
-
 on post-fs
     mkdir /dev/socket/suntory 0755 system system
-
-
-
 
 on post-fs-data
     # Create the directories used by the Wireless subsystem
@@ -102,7 +88,7 @@ on post-fs-data
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp system /data/misc/dhcp
-	
+
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
@@ -134,20 +120,16 @@ on post-fs-data
     # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
-
     mkdir /data/audio/ 0770 media audio
 
     setprop vold.post_fs_data_done 1
-
-
-
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
-	
+
 on charger
     write /sys/module/msm_fb/parameters/align_buffer 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
@@ -155,10 +137,6 @@ on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu1/online 0
-	
-
-
-
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -267,7 +245,6 @@ on boot
 
     chown system compass /data/misc/sensor
 
-    
     chmod 0664 /sys/devices/virtual/input/input1/lux_ga
     chmod 0664 /sys/devices/virtual/input/input0/prox_piltl
     chmod 0664 /sys/devices/virtual/input/input0/prox_pilth
@@ -383,7 +360,7 @@ on boot
     chown root system /sys/class/timed_output/vibrator/level
     chmod 0664 /sys/class/timed_output/vibrator/level
     restorecon /sys/class/timed_output/vibrator/level
-	
+
     # Increase read_ahead
     write /sys/block/mmcblk0/bdi/read_ahead_kb 256
     write /sys/block/mmcblk1/bdi/read_ahead_kb 256
@@ -400,11 +377,9 @@ on boot
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
-
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
-	
+
 service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -418,7 +393,7 @@ service rmt_storage /system/bin/rmt_storage
 on property:ro.boot.emmc=true
     start rmt_storage
     start ta_qmi_service
-	
+
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
@@ -551,7 +526,7 @@ service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
-	
+
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
@@ -572,7 +547,7 @@ service cci_tatest /system/bin/cci_tatest
     class main
     user root
     oneshot
-	
+
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
     user root
@@ -586,7 +561,7 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
-	
+
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
@@ -598,7 +573,7 @@ service profiler_daemon /system/bin/profiler_daemon
     user root
     group root
     disabled
-	
+
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
     user root
@@ -647,18 +622,17 @@ service qseecomd /system/bin/qseecomd
    class late_start
    user system
    group system
-   
+
 service time_daemon /system/bin/time_daemon
      class late_start
      user root
      group root
- 
+
 service wcnss-service /system/bin/wcnss_service
      class late_start
      user system
      group system wifi
      oneshot
-
 
 # CM Performance Profiles
 
