@@ -69,7 +69,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.thermal_conf.sh:system/etc/init.qcom.thermal_conf.sh 
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.thermal_conf.sh:system/etc/init.qcom.thermal_conf.sh
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
@@ -193,7 +193,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
     ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true 
+    lpa.decode=true
 
 # GPS-2	
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -206,7 +206,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.allow.mock.location=0 \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
-    persist.service.debuggable=1 
+    persist.service.debuggable=1
 
 PRODUCT_GMS_CLIENTID_BASE := android-sonyericsson
 
