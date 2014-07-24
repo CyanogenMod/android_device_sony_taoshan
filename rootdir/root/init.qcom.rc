@@ -636,11 +636,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
    user camera
    group camera system inet input graphics net_bt_stack
 
-service sensord /system/bin/sensord
-    user system
-    group compass misc input
-    class main
-    oneshot
+service sensors /system/bin/sensors.qcom
+    class late_start
+    user root
+    group root
+    disabled
 
 service qseecomd /system/bin/qseecomd
    class late_start
