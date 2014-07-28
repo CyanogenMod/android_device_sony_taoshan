@@ -586,11 +586,6 @@ service ppd /system/bin/mm-pp-daemon
     user system
     socket pps stream 0660 system system graphics
     group system graphics
-	
-service battery_monitor /system/bin/battery_monitor
-    user system
-    group system
-    disabled
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
