@@ -147,6 +147,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
 	
+# Wifi service
+PRODUCT_PACKAGES += \
+    wcnss_service
+	
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
