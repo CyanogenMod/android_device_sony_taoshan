@@ -185,6 +185,8 @@ on boot
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 0
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
+	
+    mkdir /tombstones/wcnss 0771 system system
 
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
