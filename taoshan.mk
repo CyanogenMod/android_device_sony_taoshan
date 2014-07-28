@@ -146,6 +146,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
+	
+# WIFI MAC update
+PRODUCT_PACKAGES += \
+    mac-update
 
 PRODUCT_PACKAGES += \
     librs_jni \
