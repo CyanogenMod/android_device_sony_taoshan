@@ -52,16 +52,6 @@ start_sensors()
     fi
 }
 
-start_battery_monitor()
-{
-	chown root.system /sys/module/pm8921_bms/parameters/*
-	chmod 0660 /sys/module/pm8921_bms/parameters/*
-	mkdir -p /data/bms
-	chown root.system /data/bms
-	chmod 0770 /data/bms
-	start battery_monitor
-}
-
 baseband=`getprop ro.baseband`
 izat_premium_enablement=`getprop ro.qc.sdk.izat.premium_enabled`
 
@@ -110,35 +100,3 @@ case "$target" in
         fi
 esac
 
-start_sensors
-
-case "$target" in
-    "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
-        value=`cat /sys/devices/system/soc/soc0/hw_platform`
-        case "$value" in
-            "Fluid")
-             start profiler_daemon;;
-        esac
-        ;;
-    "msm8660" )
-        platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
-        case "$platformvalue" in
-            "Fluid")
-                start profiler_daemon;;
-        esac
-        ;;
-    "msm8960")
-        case "$baseband" in
-            "msm")
-                start_battery_monitor;;
-        esac
-
-        platformvalue=`cat /sys/devices/system/soc/soc0/hw_platform`
-        case "$platformvalue" in
-             "Fluid")
-                 start profiler_daemon;;
-             "Liquid")
-                 start profiler_daemon;;
-        esac
-        ;;
-esac
