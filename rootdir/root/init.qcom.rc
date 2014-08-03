@@ -18,6 +18,7 @@ import init.qcom.usb.rc
 
 on early-init
     mkdir /firmware 0771 system system
+    mkdir /data/tombstones 0771 system system
     symlink /data/tombstones /tombstones
     mount debugfs debugfs /sys/kernel/debug
     mkdir /ftmd 0771 root system
@@ -88,6 +89,13 @@ on post-fs-data
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp system /data/misc/dhcp
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+    mkdir /tombstones/mdm2 0771 system system
+    mkdir /data/smime 0770 root smime_keystore
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
