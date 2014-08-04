@@ -88,8 +88,8 @@ lib/libfastcvopt.so
 lib/libchromatix_imx134_video_hdr.so
 lib/libchromatix_imx134_zsl.so
 lib/hw/nfc.msm8960.so
-lib/hw/vendor-lights.msm8960.so
-lib/hw/vendor-camera.msm8960.so
+lib/hw/lights.vendor.msm8960.so
+lib/hw/camera.vendor.msm8960.so
 lib/hw/sensors.msm8960.so
 lib/libsensor1.so
 lib/libalsa-intf.so
