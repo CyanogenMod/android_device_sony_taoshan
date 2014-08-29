@@ -149,11 +149,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     extract_elf_ramdisk
-	
+
 # Wifi service
 PRODUCT_PACKAGES += \
     wcnss_service
-	
+
 # WIFI MAC update
 PRODUCT_PACKAGES += \
     mac-update
@@ -174,7 +174,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/gps/sec_config:system/etc/sec_config
-
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \

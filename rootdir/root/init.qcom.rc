@@ -170,14 +170,14 @@ on boot
     chmod 664 /data/system/sensors/settings
     chown system /data/system/sensors/settings
     start sensors
-	
+
     mkdir /data/misc/wifi/prima 0775 wifi wifi
     exec /system/bin/mac-update
-	
+
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 0
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
-	
+
     mkdir /tombstones/wcnss 0771 system system
 
     # Create QMUX deamon socket area
