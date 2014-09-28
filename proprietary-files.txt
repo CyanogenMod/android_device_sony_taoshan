@@ -148,7 +148,7 @@ lib/libmmcamera_interface.so
 lib/libQSEEComAPI.so
 lib/libloc_api_v02.so
 lib/libmmcamera_plugin.so
-lib/libqc-opt.so
+lib/libqc-opt.so:vendor/lib/libqc-opt.so
 lib/libqmi.so
 lib/libqcci_adc.so
 lib/libmorpho_denoiser.so
