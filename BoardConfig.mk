@@ -103,6 +103,8 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/taoshan/bluetooth
 
+BOARD_RIL_NO_SEEK := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
 BOARD_HAS_NO_SELECT_BUTTON := true
