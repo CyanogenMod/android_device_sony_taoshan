@@ -112,6 +112,14 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
 
+    # QCOM Sensors
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
+    write /data/system/sensors/settings 1
+    chmod 664 /data/system/sensors/settings
+    chown system /data/system/sensors/settings
+    start sensors
+
     # Chown polling nodes as needed from UI running on system server
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
@@ -164,13 +172,7 @@ on boot
     write /sys/module/subsystem_restart/parameters/restart_level 1
     write /sys/module/subsystem_restart/parameters/max_restarts 8
     write /sys/module/subsystem_restart/parameters/max_history_time 3600
-    mkdir /data/system/sensors 0775 system system
-    mkdir /data/misc/sensors 0775 system system
-    write /data/system/sensors/settings 1
-    chmod 664 /data/system/sensors/settings
-    chown system /data/system/sensors/settings
-    start sensors
-
+    
     mkdir /data/misc/wifi/prima 0775 wifi wifi
     exec /system/bin/mac-update
 
@@ -423,12 +425,12 @@ on property:bluetooth.hciattach=false
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class main
+    class late_start
     user radio
     group radio audio bluetooth gps qcom_diag
 
 service netmgrd /system/bin/netmgrd
-    class main
+    class late_start
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -549,8 +551,8 @@ service charger /charger
     class charger
 
 service ta_qmi_service /system/bin/ta_qmi_service
+    class late_start
     user root
-    disabled
 
 service updatemiscta /system/bin/updatemiscta
     class main
@@ -630,7 +632,6 @@ service sensors /system/bin/sensors.qcom
     class late_start
     user root
     group root
-    disabled
 
 service qseecomd /system/bin/qseecomd
    class late_start
