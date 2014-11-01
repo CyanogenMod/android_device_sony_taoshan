@@ -304,6 +304,7 @@ on post-fs-data
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
+    start mpdecision
 
     # on demand
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
@@ -380,13 +381,6 @@ on post-fs-data
     restorecon /sys/class/timed_output/vibrator/level
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
-
-    # Post-setup services
-    exec /system/bin/rm /data/mpdecision/power_collapse
-    exec /system/bin/rm /data/mpdecision/standalone_power_collapse
-    exec /system/bin/rm -rf /data/mpdecision
-    mkdir /data/mpdecision 0770 root system
-    start mpdecision
 
 on charger
     write /sys/module/msm_fb/parameters/align_buffer 0
