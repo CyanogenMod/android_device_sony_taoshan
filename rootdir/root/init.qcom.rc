@@ -24,6 +24,8 @@ on early-init
     mkdir /ftmd 0771 root system
     mkdir /ftma 0771 system system
     mkdir /lta-label 0771 system system
+    write /sys/block/mmcblk0/bdi/read_ahead_kb 256
+    write /sys/block/mmcblk1/bdi/read_ahead_kb 256
 
 on init
     mkdir /persist 0771 system system
@@ -79,80 +81,11 @@ on fs
     exec /sbin/fota-ua c
     exec /system/bin/taimport
 
-on post-fs
-    mkdir /dev/socket/suntory 0755 system system
-
-on post-fs-data
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp system /data/misc/dhcp
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-    mkdir /tombstones/mdm 0771 system system
-    mkdir /tombstones/mdm2 0771 system system
-    mkdir /data/smime 0770 root smime_keystore
-
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
-
-    # Create directory used by audio subsystem
-    mkdir /data/misc/audio 0770 audio audio
-
-    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
-    # We chown/chmod /persist again so because mount is run as root + defaults
-    chown system system /persist
-    chmod 0771 /persist
-    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # QCOM Sensors
-    mkdir /data/system/sensors 0775 system system
-    mkdir /data/misc/sensors 0775 system system
-    write /data/system/sensors/settings 1
-    chmod 664 /data/system/sensors/settings
-    chown system /data/system/sensors/settings
-    start sensors
-
-    # Chown polling nodes as needed from UI running on system server
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_sdcc.3/polling
-    chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-
-    # Create directory for FOTA
-    mkdir /data/fota 0771
-    chown system system /data/fota
-
-    # Create directory for hostapd
-    mkdir /data/hostapd 0770 system wifi
-
-    mkdir /data/audio/ 0770 media audio
-
-    setprop vold.post_fs_data_done 1
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
-
-on charger
-    write /sys/module/msm_fb/parameters/align_buffer 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "powersave"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
-    write /sys/devices/system/cpu/cpu1/online 0
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -292,7 +225,70 @@ on boot
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
 
-#on post-boot
+on post-fs
+    mkdir /dev/socket/suntory 0755 system system
+
+on post-fs-data
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp system /data/misc/dhcp
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+    mkdir /tombstones/mdm2 0771 system system
+    mkdir /data/smime 0770 root smime_keystore
+
+    # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
+
+    # Create directory used by audio subsystem
+    mkdir /data/misc/audio 0770 audio audio
+
+    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /persist again so because mount is run as root + defaults
+    chown system system /persist
+    chmod 0771 /persist
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+
+    # QCOM Sensors
+    mkdir /data/system/sensors 0775 system system
+    mkdir /data/misc/sensors 0775 system system
+    write /data/system/sensors/settings 1
+    chmod 664 /data/system/sensors/settings
+    chown system /data/system/sensors/settings
+    start sensors
+
+    # Chown polling nodes as needed from UI running on system server
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
+
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    mkdir /data/system 0775 system system
+
+    # Create directory for FOTA
+    mkdir /data/fota 0771
+    chown system system /data/fota
+
+    # Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
+
+    mkdir /data/audio/ 0770 media audio
+
+    # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
+
+    setprop vold.post_fs_data_done 1
+
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1
     write /sys/module/rpm_resources/enable_low_power/vdd_dig 1
@@ -308,6 +304,8 @@ on boot
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
+
+    # on demand
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
@@ -334,6 +332,7 @@ on boot
     chmod 220 /sys/devices/system/cpu/mfreq
     chown root system /sys/devices/system/cpu/cpu1/online
     chmod 664 /sys/devices/system/cpu/cpu1/online
+    
     # set DCVS parameters for CPU
     write /sys/module/msm_dcvs/cores/cpu0/slack_time_max_us 40000
     write /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us 40000
@@ -347,10 +346,12 @@ on boot
     write /sys/module/msm_dcvs/cores/cpu1/em_win_size_max_us 500000
     write /sys/module/msm_dcvs/cores/cpu1/slack_mode_dynamic 0
     write /sys/module/msm_dcvs/cores/cpu1/disable_pc_threshold 1000000
+    
     # set DCVS parameters for GPU
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_max_us 20000
     write /sys/module/msm_dcvs/cores/gpu0/slack_time_min_us 20000
     write /sys/module/msm_dcvs/cores/gpu0/slack_mode_dynamic 0
+    
     # set msm_mpdecision parameters
     write /sys/module/msm_mpdecision/slack_time_max_us 45000
     write /sys/module/msm_mpdecision/slack_time_min_us 15000
@@ -372,14 +373,11 @@ on boot
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
+    
     # Hardware tunables
     chown root system /sys/class/timed_output/vibrator/level
     chmod 0664 /sys/class/timed_output/vibrator/level
     restorecon /sys/class/timed_output/vibrator/level
-
-    # Increase read_ahead
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 256
-    write /sys/block/mmcblk1/bdi/read_ahead_kb 256
 
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
 
@@ -390,8 +388,13 @@ on boot
     mkdir /data/mpdecision 0770 root system
     start mpdecision
 
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
+on charger
+    write /sys/module/msm_fb/parameters/align_buffer 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "powersave"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 384000
+    write /sys/devices/system/cpu/cpu1/online 0
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
