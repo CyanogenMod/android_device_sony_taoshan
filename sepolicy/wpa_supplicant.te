@@ -2,4 +2,4 @@
 allow wpa devpts:chr_file { read write };
 
 allow wpa wpa_socket:unix_dgram_socket { read write };
-allow wpa_socket system:unix_dgram_socket sendto;
+allow wpa_socket system_server:unix_dgram_socket sendto;
