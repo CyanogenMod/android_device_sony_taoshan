@@ -33,7 +33,7 @@
 #include <arpa/inet.h>
 
 //for SSID_BUF_SIZE
-#include <hardware/gps.h>
+#include "gps.h"
 
 enum {
     /* 0x0 - 0xEF is reserved for daemon internal */

@@ -35,7 +35,7 @@ extern "C"
 {
 #endif
 
-#include <hardware/gps.h>
+#include "gps.h"
 #include "loc_eng.h"
 
 /** Represents the standard ulp module interface. */
