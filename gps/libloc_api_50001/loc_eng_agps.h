@@ -34,7 +34,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include <hardware/gps.h>
+#include "gps.h"
 #include <linked_list.h>
 #include <LocApiAdapter.h>
 #include "loc_eng_msg.h"
