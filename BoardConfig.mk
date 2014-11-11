@@ -160,7 +160,11 @@ BOARD_SEPOLICY_UNION += \
     kickstart.te \
     mediaserver.te \
     netd.te \
+    property.te \
+    property_contexts \
     rild.te \
+    rmt.te \
+    sensors.te \
     surfaceflinger.te \
     system_server.te \
     ueventd.te \
