@@ -63,6 +63,9 @@ TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
 
+# Bionic
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
