@@ -406,7 +406,7 @@ service rmt_storage /system/bin/rmt_storage
     disabled
 
 on property:ro.boot.emmc=true
-#    start rmt_storage
+    start rmt_storage
     start ta_qmi_service
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
