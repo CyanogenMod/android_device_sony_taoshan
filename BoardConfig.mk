@@ -72,6 +72,9 @@ USE_MINIKIN := true
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# MMap compatibility
+BOARD_USES_LEGACY_MMAP := true
+
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
