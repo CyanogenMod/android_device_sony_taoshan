@@ -163,8 +163,6 @@ BOARD_SEPOLICY_UNION += \
     property.te \
     property_contexts \
     rild.te \
-    rmt.te \
-    sensors.te \
     surfaceflinger.te \
     system_server.te \
     ueventd.te \
