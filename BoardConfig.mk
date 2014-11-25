@@ -75,6 +75,9 @@ EXTENDED_FONT_FOOTPRINT := true
 # MMap compatibility
 BOARD_USES_LEGACY_MMAP := true
 
+# Use dlmalloc
+MALLOC_IMPL := dlmalloc
+
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
