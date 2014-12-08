@@ -48,6 +48,11 @@ cd /system/etc/firmware
 linksNeeded=0
 fixModemFirmware=0
 
+if [ -f /persist/wlan.ini ]; then
+rm /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+ln -s /persist/wlan.ini /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+fi
+
 # For everyfile in fwfiles check if
 # the corresponding file exists
 for fwfile in $fwfiles; do
