@@ -85,6 +85,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
+PRODUCT_PROPERTY_OVERRIDES += \
+     ro.telephony.ril_class=TaoshanRIL
+
 # Key layouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
