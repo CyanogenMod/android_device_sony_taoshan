@@ -1,0 +1,3 @@
+/dev/video([0-9])+                              u:object_r:camera_device:s0
+/dev/gemini.*                                   u:object_r:camera_device:s0
+/dev/block/mmcblk0p(.*)		                    u:object_r:mmc_block_device:s0
