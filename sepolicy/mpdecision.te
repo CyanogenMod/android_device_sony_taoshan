@@ -1,0 +1,5 @@
+allow mpdecision socket_device:dir add_name;
+allow mpdecision socket_device:sock_file { create setattr write };
+
+allow mpdecision system_data_file:dir { write add_name create read open };
+allow mpdecision system_data_file:file { append open read create write };
