@@ -166,6 +166,13 @@ PRODUCT_PACKAGES += \
     setup_fs \
     e2fsck
 
+# FM radio
+PRODUCT_PACKAGES += \
+	qcom.fmradio \
+	libqcomfm_jni \
+	FM2 \
+	FMRecord
+
 # GPS-1
 PRODUCT_PACKAGES += \
     gps.msm8960
