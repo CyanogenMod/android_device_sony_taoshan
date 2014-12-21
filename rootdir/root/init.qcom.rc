@@ -252,6 +252,10 @@ on boot
     chmod 0600 /dev/pn544
     chown nfc nfc /dev/pn544
 
+    # FM
+    chmod 0644 /dev/radio0
+    chown fm_radio fm_radio /dev/radio0
+
     # Sensor porting
     chmod 0664 /sys/devices/virtual/input/input1/als_power_state
     chmod 0664 /sys/devices/virtual/input/input1/prox_power_state
