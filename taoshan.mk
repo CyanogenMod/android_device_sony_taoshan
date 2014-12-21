@@ -154,10 +154,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wcnss_service
 
-# WIFI MAC update
-PRODUCT_PACKAGES += \
-    mac-update
-
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
