@@ -162,14 +162,19 @@ BOARD_SEPOLICY_DIRS += \
     device/sony/taoshan/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+       adbd.te \
+       device.te \
        file_contexts \
-       vold.te \
-       netmgrd.te \
-       thermal-engine.te \
-       rmt_storage.te \
-       mpdecision.te \
-       mm-qcamerad.te \
+       init_shell.te \
        location.te \
+       mm-qcamerad.te \
+       mpdecision.te \
+       netmgrd.te \
+       rild.te \
+       rmt_storage.te \
        sdcardd.te \
        system_app.te \
-       ueventd.te
+       system_server.te \
+       thermal-engine.te \
+       ueventd.te \
+       vold.te
