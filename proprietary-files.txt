@@ -21,7 +21,6 @@ bin/fmconfig
 bin/mm-pp-daemon
 bin/efsks
 bin/fm_qsoc_patches
-bin/qrngd
 bin/mpdecision
 etc/firmware
 etc/firmware/vidc.b00
