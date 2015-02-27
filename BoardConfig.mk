@@ -164,17 +164,22 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
        adbd.te \
        device.te \
+       dhcp.te \
        file_contexts \
        init_shell.te \
        location.te \
+       mediaserver.te \
        mm-qcamerad.te \
        mpdecision.te \
+       netd.te \
        netmgrd.te \
        rild.te \
        rmt_storage.te \
        sdcardd.te \
+       shell.te \
        system_app.te \
        system_server.te \
        thermal-engine.te \
        ueventd.te \
-       vold.te
+       vold.te \
+       wpa.te
