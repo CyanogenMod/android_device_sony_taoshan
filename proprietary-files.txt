@@ -46,7 +46,6 @@ lib/libmorpho_scene_detector.so
 lib/libtzplayready.so
 lib/libidl.so
 lib/libmmcamera_faceproc.so
-lib/libmm-abl.so
 lib/libmmcamera_image_stab.so
 lib/libmm-color-convertor.so
 lib/libmorpho_posture_detect.so
