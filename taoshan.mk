@@ -162,6 +162,10 @@ PRODUCT_PACKAGES += \
     setup_fs \
     e2fsck
 
+PRODUCT_PACKAGES += \
+    libimage-jpeg-enc-omx-comp \
+    libmmstillomx
+
 # FM radio
 PRODUCT_PACKAGES += \
 	qcom.fmradio \

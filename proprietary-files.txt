@@ -100,7 +100,7 @@ lib/libprofiler_msmadc.so
 lib/libmmcamera_tintless_wrapper.so
 lib/libacdbloader.so
 lib/libsurround_proc.so
-lib/libmmstillomx.so
+-lib/libmmstillomx.so
 lib/libdrmdecrypt.so
 lib/liblights-core.so
 lib/libmmcamera_tintless_algo.so
@@ -122,7 +122,7 @@ lib/liboemcamera.so
 lib/libmm-color-convertor.so
 lib/libchromatix_imx134_default_video.so
 lib/libmm-audio-resampler.so
-lib/libimage-jpeg-enc-omx-comp.so
+-lib/libimage-jpeg-enc-omx-comp.so
 lib/libcsd-client.so
 lib/libchromatix_imx134_preview.so
 lib/libadsprpc.so
