@@ -109,6 +109,9 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     libtinyxml
 
+PRODUCT_PACKAGES += \
+    camera.msm8960
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
