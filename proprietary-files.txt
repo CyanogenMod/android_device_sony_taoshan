@@ -16,7 +16,6 @@ bin/updatemiscta
 bin/akmd8963
 bin/hci_qcomm_init
 bin/qmuxd
-bin/mm-pp-daemon
 bin/fm_qsoc_patches
 bin/efsks
 bin/cci_tatest
