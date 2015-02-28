@@ -170,6 +170,7 @@ static camera_size_type default_picture_sizes[] = {
   { 1920, 1080}, //HD1080
   { 1600, 1200}, // 2MP UXGA
   { 1280, 768}, //WXGA
+  { 1920, 1080}, //HD1080
   { 1280, 720}, //HD720
   { 1024, 768}, // 1MP XGA
   { 800, 600}, //SVGA
