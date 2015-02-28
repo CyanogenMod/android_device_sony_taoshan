@@ -142,7 +142,17 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
-
+    <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="17000000"
+                   width="1920"
+                   height="1080"
+                   frameRate="30" />
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+    </EncoderProfile>
     <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="192000"
@@ -225,7 +235,18 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
-
+    <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="17000000"
+                   width="1920"
+                   height="1080"
+                   frameRate="30" />
+            <!-- audio setting is ignored -->
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+    </EncoderProfile>
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
@@ -425,9 +446,9 @@
         maxInputFrameHeight="1088" maxOutputFrameWidth="1920"
         maxOutputFrameHeight="1088" maxPrefetchYUVFrames="10"/>
 -->
-    <VideoEditorCap  maxInputFrameWidth="1280"
-        maxInputFrameHeight="720" maxOutputFrameWidth="1280"
-        maxOutputFrameHeight="720" maxPrefetchYUVFrames="10"/>
+    <VideoEditorCap  maxInputFrameWidth="1920"
+        maxInputFrameHeight="1080" maxOutputFrameWidth="1920"
+        maxOutputFrameHeight="1080" maxPrefetchYUVFrames="10"/>
     <!--
         The VideoEditor Export codec profile and level values
         correspond to the values in OMX_Video.h.
