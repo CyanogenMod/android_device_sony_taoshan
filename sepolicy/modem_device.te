@@ -1,0 +1,1 @@
+allow modem_device self:filesystem associate;
