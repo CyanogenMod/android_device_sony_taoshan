@@ -1,6 +1,5 @@
 /dev/video([0-9])+                              u:object_r:camera_device:s0
 /dev/gemini.*                                   u:object_r:camera_device:s0
 /dev/block/mmcblk0p(.*)		                    u:object_r:mmc_block_device:s0
-/ftma(/.*)?                                     u:object_r:firmware_device:s0
-/firmware/image(/.*)?                           u:object_r:radio_files:s0
-/sys/class/timed_output/vibrator/level        u:object_r:sysfs_writable:s0
+/dev/block/bootdevice/by-name/modem             u:object_r:modem_device:s0
+/sys/class/timed_output/vibrator/level          u:object_r:sysfs_writable:s0
