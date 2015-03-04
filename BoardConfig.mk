@@ -168,12 +168,10 @@ BOARD_SEPOLICY_UNION += \
        device.te \
        dhcp.te \
        file_contexts \
-       init.te \
        init_shell.te \
        location.te \
        mediaserver.te \
        mm-qcamerad.te \
-       modem_device.te \
        mpdecision.te \
        netd.te \
        netmgrd.te \

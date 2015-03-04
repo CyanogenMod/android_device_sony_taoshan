@@ -1,1 +1,2 @@
-type modem_device, dev_type;
+type firmware_device, dev_type;
+type radio_files, dev_type;
