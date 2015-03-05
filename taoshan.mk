@@ -20,8 +20,6 @@ $(call inherit-product, device/sony/msm8960-common/msm8960.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-TARGET_PROVIDES_ADRENO_DRIVER := true
-
 # OpenGL ES 3.0
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
