@@ -19,9 +19,6 @@ include vendor/sony/taoshan/BoardConfigVendor.mk
 # inherit qcom common sepolicies
 include device/qcom/sepolicy/sepolicy.mk
 
-# inherit from Sony common
-include device/sony/common/BoardConfigCommon.mk
-
 # inherit from msm8960-common
 include device/sony/msm8960-common/BoardConfigCommon.mk
 
