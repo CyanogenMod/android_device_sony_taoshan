@@ -4,3 +4,4 @@
 /ftma(/.*)?                                     u:object_r:firmware_device:s0
 /firmware/image(/.*)?                           u:object_r:radio_files:s0
 /sys/class/timed_output/vibrator/level        u:object_r:sysfs_writable:s0
+/sys/devices/platform/mdp.525057/kcal         u:object_r:sysfs_writable:s0
