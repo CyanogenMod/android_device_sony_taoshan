@@ -159,7 +159,6 @@ on boot
     write /sys/module/subsystem_restart/parameters/max_history_time 3600
 
     mkdir /data/misc/wifi/prima 0775 wifi wifi
-
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 0
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
@@ -284,6 +283,10 @@ on boot
     chown root system /sys/class/timed_output/vibrator/level
     chmod 0664 /sys/class/timed_output/vibrator/level
     restorecon /sys/class/timed_output/vibrator/level
+
+    chown root system /sys/devices/platform/mdp.525057/kcal
+    chmod 0664 /sys/devices/platform/mdp.525057/kcal
+    restorecon /sys/devices/platform/mdp.525057/kcal
 
     # Increase read_ahead
     write /sys/block/mmcblk0/bdi/read_ahead_kb 256
