@@ -206,9 +206,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wcnss_service
 
-PRODUCT_PACKAGES += \
-    e2fsck
-
 # FM radio
 PRODUCT_PACKAGES += \
     FM2 \
@@ -251,8 +248,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.lowlatency.rec=false \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.audio.fluencetype=none \
-    lpa.decode=true
+    ro.qc.sdk.audio.fluencetype=none
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
