@@ -47,7 +47,16 @@ modem_fwfiles=`ls modem_fw.mdt`
 cd /system/etc/firmware
 linksNeeded=0
 fixModemFirmware=0
-
+ MACori=$(cat /persist/wlan.ini | grep Intf0MacAddress | tail -c 14)
+        MACstd=$(cat /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini | grep Intf0MacAddress | tail -c 13)
+        if [ $MACstd != $MACori ]; then
+                mount -o rw,remount,barrier=1 /system
+                mv /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini /system/etc/firmware/wlan/prima/temp
+                cat /system/etc/firmware/wlan/prima/temp | sed 's/^Intf0MacAddress=.*/Intf0MacAddress='$MACori'/g;s/^Intf1MacAddress=.*/Intf1MacAddress='$MACori'/g;s/^Intf2MacAddress=.*/Intf2MacAddress='$MACori'/g' > /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+                rm /system/etc/firmware/wlan/prima/temp
+                mount -o ro,remount,barrier=1 /system
+        fi    
+        ln -s /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini /data/misc/wifi/WCNSS_qcom_cfg.ini
 # For everyfile in fwfiles check if
 # the corresponding file exists
 for fwfile in $fwfiles; do
