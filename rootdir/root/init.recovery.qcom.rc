@@ -5,15 +5,6 @@ on init
     write /sys/class/android_usb/f_mass_storage/serial_number ${ro.serialno}
     write /sys/class/android_usb/f_mass_storage/eui64_id 000AD90000000000
 
-service remap /sbin/remap.sh
-    oneshot
-    disabled
-
-# Remap boot and FOTA for lk if lk is present
-on property:ro.bootloader=lk
-    start remap
-    setprop lk.remap 1
-
 on boot
     write /sys/module/pm_8x60/modes/cpu0/retention/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/retention/idle_enabled 1

@@ -3082,7 +3082,7 @@ SectionDevice
 		'LINEOUT2 Volume':1:100
 		'SLIM_0_RX Channels':0:One
 		'RX1 MIX1 INP1':0:RX1
-		'RX1 Digital Volume':1:70
+		'RX1 Digital Volume':1:76
 		'PMIC SPK Gain':0:POS_10_DB
 	EndSequence
 

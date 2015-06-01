@@ -39,7 +39,7 @@ on post-fs
     chown system system /sys/devices/platform/msm_hsusb/gadget/lun1/file
     chmod 0660 /sys/devices/platform/msm_hsusb/gadget/lun1/file
     write /sys/class/android_usb/f_mass_storage/inquiry_string "SONY    Mass Storage    0100"
-    write /sys/class/android_usb/android0/f_mass_storage/serial_number $ro.serialno
+    write /sys/class/android_usb/android0/f_mass_storage/serial_number $(ro.serialno)
     write /sys/class/android_usb/android0/f_mass_storage/eui64_id 000AD90000000000
     write /sys/devices/platform/msm_hsusb/gadget/lun1/nofua 1
 
@@ -109,6 +109,25 @@ on property:sys.usb.config=ptp,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 0FCE
     write /sys/class/android_usb/android0/idProduct 904E
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# charging only
+on property:sys.usb.config=charging
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0FCE
+    write /sys/class/android_usb/android0/idProduct E192
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=charging,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0FCE
+    write /sys/class/android_usb/android0/idProduct 6192
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
     start adbd

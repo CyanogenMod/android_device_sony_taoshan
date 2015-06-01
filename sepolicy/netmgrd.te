@@ -1,0 +1,1 @@
+allow netmgrd self:socket create_socket_perms;
