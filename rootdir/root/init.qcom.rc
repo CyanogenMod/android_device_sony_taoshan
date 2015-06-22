@@ -122,6 +122,8 @@ on post-fs-data
 
     mkdir /data/audio/ 0770 media audio
 
+    chown system /dev/block/platform/msm_sdcc.1/by-name
+
     setprop vold.post_fs_data_done 1
 
 on early-boot
@@ -484,7 +486,7 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-service tad_static /sbin/tad_static /dev/block/mmcblk0p1 0,16
+service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
     class trimarea
     user root
     group root
