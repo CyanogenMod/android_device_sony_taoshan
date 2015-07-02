@@ -48,9 +48,6 @@ TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-# MMap compatibility
-BOARD_USES_LEGACY_MMAP := true
-
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
