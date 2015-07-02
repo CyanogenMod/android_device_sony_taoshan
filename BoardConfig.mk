@@ -64,9 +64,6 @@ TARGET_NO_RADIOIMAGE := true
 # Bionic
 MALLOC_IMPL := dlmalloc
 
-# MMap compatibility
-BOARD_USES_LEGACY_MMAP := true
-
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
