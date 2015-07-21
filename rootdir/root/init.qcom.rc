@@ -482,6 +482,7 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
     user system
     group system
+    disabled
     oneshot
 
 service tad_static /sbin/tad_static /dev/block/mmcblk0p1 0,16
