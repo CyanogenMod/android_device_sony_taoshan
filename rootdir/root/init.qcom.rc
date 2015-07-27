@@ -232,6 +232,10 @@ on boot
     chmod 0644 /dev/radio0
     chown fm_radio fm_radio /dev/radio0
 
+    #Create FM dir for patchdownloader
+    mkdir /data/misc/fm 0770 system system
+    chmod 0770 /data/misc/fm
+
     # Sensor porting
     chmod 0664 /sys/devices/virtual/input/input1/als_power_state
     chmod 0664 /sys/devices/virtual/input/input1/prox_power_state
