@@ -198,9 +198,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.audio.init=complete \
-    persist.audio.fluence.mode=endfire \
+    persist.audio.fluence.mode=false \
     persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
+    persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false \
     media.aac_51_output_enabled=true \
     ro.qc.sdk.audio.ssr=false \
