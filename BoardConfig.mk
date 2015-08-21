@@ -12,13 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from msm8960-common
-include device/sony/msm8960-common/BoardConfigCommon.mk
+# Inherit from Sony common
+include device/sony/common/BoardConfigCommon.mk
 
 USE_CAMERA_STUB := false
 
+# Architecture
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := krait
+
 BOARD_VENDOR_PLATFORM := taoshan
 TARGET_BOOTLOADER_BOARD_NAME := qcom
+TARGET_BOARD_PLATFORM := msm8960
 
 TARGET_OTA_ASSERT_DEVICE := C2105,C2104,c2105,c2104,taoshan
 
@@ -49,6 +57,13 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_KERNEL_SOURCE := kernel/sony/msm8930
 TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 
+# Board overrides
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# Bionic
+MALLOC_IMPL := dlmalloc
+
 # MMap compatibility
 BOARD_USES_LEGACY_MMAP := true
 
@@ -60,6 +75,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/sony/taoshan/include
 BOARD_RIL_NO_CELLINFOLIST := true
 
 # Audio
+BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 AUDIO_FEATURE_ENABLED_FM := true
@@ -67,9 +83,15 @@ QCOM_FM_ENABLED := true
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+# Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 COMMON_GLOBAL_CFLAGS += -DSONY_CAM_PARAMS
+
+# Display HAL
+USE_OPENGL_RENDERER := true
+TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
@@ -93,9 +115,22 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 
 # Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
+BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/taoshan/bluetooth
 
 BOARD_RIL_NO_SEEK := true
+
+# Lights HAL
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Power HAL
+TARGET_POWERHAL_VARIANT := qcom
+CM_POWERHAL_EXTENSION := qcom
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
@@ -110,6 +145,12 @@ TARGET_POWERHAL_NO_TOUCH_BOOST := true
 BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
 
 TARGET_USES_LOGD := false
+
+# RIL
+BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
+
+# Font expansion
+EXTENDED_FONT_FOOTPRINT := true
 
 # inherit qcom common sepolicies
 include device/qcom/sepolicy/sepolicy.mk
