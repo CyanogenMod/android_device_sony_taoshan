@@ -86,14 +86,23 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         hw_id = strtoul(tmp, NULL, 0);
     }
 
+    /* Set common model number */
+    property_set("ro.product.model", "Xperia L");
+
     /* C2104 */
     if (hw_id==87) {
-        property_set("ro.product.model", "C2104");
+        property_set("ro.build.description", "C2104-user 4.2.2 JDQ39 Android.1016 test-keys");
+        property_set("ro.build.fingerprint", "Sony/C2104/C2104:4.2.2/15.3.A.1.17/Android.1016:user/release-keys");
+        property_set("ro.build.product", "C2104");
+        property_set("ro.product.device", "C2104");
     }
-	
+
     /* C2105 otherwise */
     else {
-        property_set("ro.product.model", "C2105");
+        property_set("ro.build.description", "C2105-user 4.2.2 JDQ39 Android.1016 test-keys");
+        property_set("ro.build.fingerprint", "Sony/C2105/C2105:4.2.2/15.3.A.1.17/Android.1016:user/release-keys");
+        property_set("ro.build.product", "C2105");
+        property_set("ro.product.device", "C2105");
     }
 
 }

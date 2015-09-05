@@ -24,13 +24,10 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 TARGET_SCREEN_HEIGHT := 854
 TARGET_SCREEN_WIDTH := 480
 
-# Build fingerprints
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=C2105 BUILD_FINGERPRINT=Sony/C2105/C2105:4.2.2/15.3.A.1.17/Android.1016:user/release-keys PRIVATE_BUILD_DESC="C2105-user 4.2.2 JDQ39 Android.1016 test-keys"
-
 # Device identifier
 PRODUCT_DEVICE := taoshan
 PRODUCT_NAME := cm_taoshan
 PRODUCT_BRAND := Sony
-PRODUCT_MODEL := C2105
+PRODUCT_MODEL := taoshan
 PRODUCT_MANUFACTURER := Sony
 PRODUCT_CHARACTERISTICS := phone
