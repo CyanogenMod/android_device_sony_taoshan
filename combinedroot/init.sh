@@ -56,14 +56,15 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	load_image=/sbin/ramdisk-recovery.cpio
 else
 	busybox echo 'ANDROID BOOT' >>boot.txt
-	# poweroff LED
-	busybox echo 0 > ${BOOTREC_LED_RED}
-	busybox echo 0 > ${BOOTREC_LED_GREEN}
-	busybox echo 0 > ${BOOTREC_LED_BLUE}
 fi
 
 # kill the keycheck process
 busybox pkill -f "busybox cat ${BOOTREC_EVENT}"
+
+# poweroff LED
+busybox echo 0 > ${BOOTREC_LED_RED}
+busybox echo 0 > ${BOOTREC_LED_GREEN}
+busybox echo 0 > ${BOOTREC_LED_BLUE}
 
 # unpack the ramdisk image
 busybox cpio -i < ${load_image}
