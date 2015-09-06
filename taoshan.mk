@@ -106,7 +106,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/sbin/tad_static:root/sbin/tad_static
 
 PRODUCT_PACKAGES += \
-    charger \
     charger_res_images \
     libnl_2 \
     libtinyxml
