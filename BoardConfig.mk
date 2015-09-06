@@ -33,7 +33,7 @@ TARGET_OTA_ASSERT_DEVICE := C2105,C2104,c2105,c2104,taoshan
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 # the androidboot.hardware has impact on loading .rc files
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
@@ -138,6 +138,13 @@ TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/taoshan/custombootimg.mk
+
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+RED_LED_PATH := /sys/class/leds/led:rgb_red/brightness
+GREEN_LED_PATH := /sys/class/leds/led:rgb_green/brightness
+BLUE_LED_PATH := /sys/class/leds/led:rgb_blue/brightness
 
 BOARD_USES_QC_TIME_SERVICES := true
 
