@@ -551,8 +551,10 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk
     class late_start
     disabled
 
-service charger /charger
+# healthd
+service charger /sbin/healthd -c
     class charger
+    seclabel u:r:healthd:s0
 
 service ta_qmi_service /system/bin/ta_qmi_service
     user root

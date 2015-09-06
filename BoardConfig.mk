@@ -139,6 +139,13 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/taoshan/custombootimg.mk
 
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+RED_LED_PATH := /sys/class/leds/led:rgb_red/brightness
+GREEN_LED_PATH := /sys/class/leds/led:rgb_green/brightness
+BLUE_LED_PATH := /sys/class/leds/led:rgb_blue/brightness
+
 BOARD_USES_QC_TIME_SERVICES := true
 
 TARGET_POWERHAL_NO_TOUCH_BOOST := true
