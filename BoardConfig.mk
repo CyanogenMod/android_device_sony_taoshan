@@ -145,8 +145,6 @@ TARGET_POWERHAL_NO_TOUCH_BOOST := true
 
 BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
 
-TARGET_USES_LOGD := false
-
 # RIL
 BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
 
