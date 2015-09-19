@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/sony/taoshan/taoshan.mk)
+$(call inherit-product, device/sony/taoshan/full_taoshan.mk)
 
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
@@ -20,14 +20,6 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 # Inherit CM common Phone stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Boot Animation
-TARGET_SCREEN_HEIGHT := 854
-TARGET_SCREEN_WIDTH := 480
-
-# Device identifier
+# Override some inherited defines
 PRODUCT_DEVICE := taoshan
 PRODUCT_NAME := cm_taoshan
-PRODUCT_BRAND := Sony
-PRODUCT_MODEL := taoshan
-PRODUCT_MANUFACTURER := Sony
-PRODUCT_CHARACTERISTICS := phone
