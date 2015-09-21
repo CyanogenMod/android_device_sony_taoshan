@@ -147,7 +147,10 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 TARGET_POWERHAL_NO_TOUCH_BOOST := true
 
-BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS := \
+    hardware/cyanogen/cmhw \
+    device/sony/taoshan/cmhw
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
