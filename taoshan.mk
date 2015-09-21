@@ -192,6 +192,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
 
+# I/O Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
+
 PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libqsap_sdk \
