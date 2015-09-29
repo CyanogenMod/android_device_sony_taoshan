@@ -231,7 +231,6 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 PRODUCT_PACKAGES += \
-    setup_fs \
     e2fsck
 
 # FM radio
