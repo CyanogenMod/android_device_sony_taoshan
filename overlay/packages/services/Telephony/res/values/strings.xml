@@ -16,11 +16,11 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string-array name="enabled_networks_except_lte_choices" translatable="false">
+    <!-- <string-array name="enabled_networks_except_lte_choices" translatable="false">
         <item>@string/preferred_network_mode_gsm_only_choice</item>
         <item>@string/preferred_network_mode_gsm_wcdma_preferred_choice</item>
         <item>@string/preferred_network_mode_wcdma_only_choice</item>
-    </string-array>
+    </string-array> -->
 
     <string-array name="enabled_networks_except_lte_values" translatable="false">
         <item>"1"</item>
