@@ -33,7 +33,7 @@ TARGET_OTA_ASSERT_DEVICE := C2105,C2104,c2105,c2104,taoshan
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 # the androidboot.hardware has impact on loading .rc files
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.bootdevice=msm_sdcc.1 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
@@ -76,8 +76,8 @@ BOARD_RIL_NO_CELLINFOLIST := true
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
-AUDIO_FEATURE_ENABLED_FM := true
-QCOM_FM_ENABLED := true
+#AUDIO_FEATURE_ENABLED_FM := true
+#QCOM_FM_ENABLED := true
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
@@ -149,9 +149,9 @@ BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
 EXTENDED_FONT_FOOTPRINT := true
 
 # inherit qcom common sepolicies
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/sony/taoshan/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#    device/sony/taoshan/sepolicy
 
 include vendor/sony/taoshan/BoardConfigVendor.mk
