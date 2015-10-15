@@ -234,11 +234,11 @@ PRODUCT_PACKAGES += \
     e2fsck
 
 # FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
+#PRODUCT_PACKAGES += \
+#    qcom.fmradio \
+#    libqcomfm_jni \
+#    FM2 \
+#    FMRecord
 
 # GPS-1
 PRODUCT_PACKAGES += \
@@ -247,6 +247,10 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     keycheck
+
+# stlport
+PRODUCT_PACKAGES += \
+    libstlport
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
