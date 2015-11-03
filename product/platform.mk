@@ -12,6 +12,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
+# Sony MACAddrSetup package
+PRODUCT_PACKAGES += \
+    macaddrsetup
+
 # Storage properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.primary_physical=1

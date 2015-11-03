@@ -124,8 +124,6 @@ on boot
     write /sys/module/subsystem_restart/parameters/max_restarts 8
     write /sys/module/subsystem_restart/parameters/max_history_time 3600
 
-    mkdir /data/misc/wifi/prima 0775 wifi wifi
-
     write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 0
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
@@ -282,7 +280,7 @@ on property:ro.boot.emmc=true
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin net_bt_stack
+    group qcom_oncrpc bluetooth net_bt_admin
     disabled
     oneshot
 
@@ -462,10 +460,10 @@ service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,
     socket tad stream 0660 system system
     seclabel u:r:tad:s0
 
-service taimport /system/bin/taimport
+# Wi-Fi and BT MAC addresses
+service macaddrsetup /system/bin/macaddrsetup /sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr
     class late_start
     user root
-    group system
     oneshot
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
@@ -497,4 +495,5 @@ service wcnss-service /system/bin/wcnss_service
      class late_start
      user system
      group system wifi
+     disabled
      oneshot

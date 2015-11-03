@@ -15,7 +15,6 @@ bin/qmuxd
 bin/qrngd
 bin/qseecomd
 bin/rmt_storage
-bin/taimport
 bin/ta_qmi_service
 bin/thermald
 bin/updatemiscta
@@ -129,7 +128,7 @@ lib/libril-qcril-hook-oem.so
 lib/librmp.so
 lib/libsensor1.so
 lib/libsurround_proc.so
-lib/libta.so
+-lib/libta.so
 lib/libtime_genoff.so
 lib/libtzplayready.so
 lib/libwvm.so
