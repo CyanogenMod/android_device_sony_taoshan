@@ -12,6 +12,10 @@
     "target_path": "external/sony/boringssl-compat"
   },
   {
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport"
+  },
+  {
     "repository": "android_kernel_sony_msm8930",
     "target_path": "kernel/sony/msm8930"
   }
