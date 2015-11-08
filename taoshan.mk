@@ -246,6 +246,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keycheck
 
+# stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf \
