@@ -261,7 +261,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1
