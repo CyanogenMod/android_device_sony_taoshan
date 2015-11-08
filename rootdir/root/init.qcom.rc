@@ -27,6 +27,9 @@ on early-init
     mkdir /lta-label 0771 system system
 
 on init
+    # BoringSSL compat
+    export LD_PRELOAD "libboringssl-compat.so"
+
     # shim library for missing symbols in libqc-opt.so
     export LD_SHIM_LIBS "/system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
 
