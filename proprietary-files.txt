@@ -18,7 +18,6 @@ bin/rmt_storage
 bin/taimport
 bin/ta_qmi_service
 bin/thermald
-bin/time_daemon
 bin/updatemiscta
 etc/firmware/a225p5_pm4.fw
 etc/firmware/a225_pfp.fw
