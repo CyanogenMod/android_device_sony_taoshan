@@ -16,7 +16,3 @@ PRODUCT_COPY_FILES += \
 # Lights package
 PRODUCT_PACKAGES += \
     lights.msm8960
-
-# Time properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true

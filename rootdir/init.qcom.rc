@@ -65,9 +65,6 @@ on post-fs-data
     mkdir /tombstones/mdm2 0771 system system
     mkdir /data/smime 0770 root smime_keystore
 
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
-
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
@@ -266,9 +263,6 @@ on boot
     rmdir /data/mpdecision
     mkdir /data/mpdecision 0770 root system
     start mpdecision
-
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
@@ -500,11 +494,6 @@ service qseecomd /system/bin/qseecomd
    class late_start
    user system
    group system
-
-service time_daemon /system/bin/time_daemon
-     class late_start
-     user root
-     group root
 
 service wcnss-service /system/bin/wcnss_service
      class late_start
