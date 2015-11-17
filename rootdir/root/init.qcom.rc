@@ -27,6 +27,9 @@ on early-init
     mkdir /lta-label 0771 system system
 
 on init
+    # shim library for missing symbols in libqc-opt.so
+    export LD_SHIM_LIBS "/system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
+
     mkdir /persist 0771 system system
 
     # for backwards compatibility
