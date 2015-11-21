@@ -142,6 +142,7 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libc2d2_a3xx.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d2_z180.so
+vendor/lib/libc2d30.so
 vendor/lib/libCB.so
 vendor/lib/libdiag.so
 vendor/lib/libgsl.so
@@ -149,6 +150,9 @@ vendor/lib/libllvm-a3xx.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
 vendor/lib/libqc-opt.so
+vendor/lib/librs_adreno_sha1.so
+vendor/lib/librs_adreno.so
+vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libulp2.so
