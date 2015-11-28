@@ -6,3 +6,6 @@ ro.sf.lcd_density=240
 
 # By default, primary storage is physical
 ro.vold.primary_physical=1
+
+# mQANElements
+ro.ril.telephony.mqanelements=6
