@@ -14,5 +14,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/cache          /cache       f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                                                       wait,check
 /dev/block/platform/msm_sdcc.1/by-name/FOTAKernel     /recovery    emmc    defaults                                                                                              defaults
 
-/devices/platform/msm_sdcc.1/mmc_host/mmc0*           auto         auto    defaults                                                                                              voldmanaged=sdcard0:32,noemulatedsd
+/devices/platform/msm_sdcc.1/mmc_host/mmc0*           auto         auto    defaults                                                                                              voldmanaged=sdcard0:32,nonremovable,noemulatedsd
 /devices/platform/msm_sdcc.3/mmc_host*                auto         auto    nosuid,nodev                                                                                          voldmanaged=sdcard1:auto,encryptable=userdata
