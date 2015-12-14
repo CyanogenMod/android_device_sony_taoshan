@@ -146,6 +146,9 @@ TARGET_POWERHAL_NO_TOUCH_BOOST := true
 
 BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/sony/taoshan/ril/
+
 # Font expansion
 EXTENDED_FONT_FOOTPRINT := true
 
