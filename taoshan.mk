@@ -184,7 +184,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.telephony.mqanelements=6
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.ril_class=SonyRIL
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
