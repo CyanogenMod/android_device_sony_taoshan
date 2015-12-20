@@ -237,11 +237,9 @@ PRODUCT_PACKAGES += \
     e2fsck
 
 # FM radio
-#PRODUCT_PACKAGES += \
-#    qcom.fmradio \
-#    libqcomfm_jni \
-#    FM2 \
-#    FMRecord
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
 
 # GPS-1
 PRODUCT_PACKAGES += \
