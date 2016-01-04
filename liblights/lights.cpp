@@ -97,7 +97,11 @@ static int lights_set_light(struct light_device_t* dev,
     if(!dev)
         return -EINVAL;
 
-    return VENDOR_CALL(dev, set_light, state);
+    // Filter out the unused alpha channel
+    struct light_state_t lights = *state;
+    lights.color = lights.color & 0x00FFFFFF;
+
+    return VENDOR_CALL(dev, set_light, &lights);
 }
 
 static int lights_device_close(hw_device_t* device)
