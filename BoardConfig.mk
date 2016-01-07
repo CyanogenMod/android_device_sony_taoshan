@@ -132,6 +132,7 @@ TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/taoshan/custombootimg.mk
+BOARD_SONY_INIT_BOARD := device/sony/taoshan/init_sony/init_board_taoshan.cpp
 
 # Healthd
 BOARD_CHARGER_ENABLE_SUSPEND := true
