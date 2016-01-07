@@ -222,9 +222,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     memtrack.msm8960
 
-PRODUCT_PACKAGES += \
-    extract_elf_ramdisk
-
 # Wifi service
 PRODUCT_PACKAGES += \
     wcnss_service
