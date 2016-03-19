@@ -1,1 +1,0 @@
-allow rild sysfs:file write;
