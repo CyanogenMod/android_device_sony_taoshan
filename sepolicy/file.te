@@ -1,0 +1,5 @@
+type radio_files, dev_type;
+type tad_static_exec, dev_type;
+type taimport_exec, dev_type;
+type calibrate_btm_sysfs_file, dev_type;
+type tad_socket, dev_type;
