@@ -1,1 +1,1 @@
-allow system_server sysfs_writable:file rw_file_perms;
+allow system_server system_file:file execmod;
