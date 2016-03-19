@@ -1,0 +1,4 @@
+type updatemiscta, domain;
+type updatemiscta_exec, exec_type, file_type;
+type updatemiscta_device, dev_type;
+init_daemon_domain(updatemiscta)

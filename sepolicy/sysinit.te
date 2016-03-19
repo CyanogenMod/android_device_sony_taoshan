@@ -1,7 +1,0 @@
-allow sysinit cgroup:dir { create add_name };
-allow sysinit kernel:process setsched;
-allow sysinit userinit_exec:file { read getattr open execute execute_no_trans };
-allow sysinit mmc_block_device:blk_file getattr;
-allow sysinit rootfs:file { execute execute_no_trans };
-allow sysinit sysfs:file write;
-allow sysinit sysfs_lowmemorykiller:file write;
