@@ -1,5 +1,4 @@
-allow mpdecision socket_device:dir add_name;
-allow mpdecision socket_device:sock_file { create setattr write };
-allow mpdecision socket_device:sock_file unlink;
+type mpdecision_data_file, dev_type;
+type mpctl_socket, file_type;
 
-allow mpdecision system_data_file:dir { write add_name create read open };
+allow mpdecision mpdecision_socket:sock_file unlink;
