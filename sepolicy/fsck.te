@@ -1,0 +1,3 @@
+allow fsck ftmd_block_device:blk_file { read write ioctl open };
+allow fsck persist_block_device:blk_file { read write ioctl open };
+allow fsck swap_block_device:blk_file getattr;
