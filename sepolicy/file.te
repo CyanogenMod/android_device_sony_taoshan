@@ -1,0 +1,4 @@
+type radio_files, file_type;
+type tad_static_exec, exec_type, file_type;
+type calibrate_btm_sysfs_file, file_type;
+type tad_socket, file_type;
