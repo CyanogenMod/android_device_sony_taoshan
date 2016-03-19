@@ -2,4 +2,9 @@
 /dev/gemini.*                                   u:object_r:camera_device:s0
 /ftma(/.*)?                                     u:object_r:firmware_device:s0
 /firmware/image(/.*)?                           u:object_r:radio_files:s0
-/sys/class/timed_output/vibrator/level        u:object_r:sysfs_writable:s0
+/sys/class/timed_output/vibrator/level          u:object_r:sysfs_writable:s0
+/dev/block/platform/msm_sdcc.1/by-name/ftmd     u:object_r:ftmd_block_device:s0
+/dev/block/platform/msm_sdcc.1/by-name/persist  u:object_r:persist_block_device:s0
+/dev/block/platform/msm_sdcc.1/by-name/TA       u:object_r:ta_block_device:s0
+/sbin/tad_static                                u:object_r:tad_static_exec:s0
+/data/system/default_values                     u:object_r:mpctl_data_file:s0
