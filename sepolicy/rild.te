@@ -1,1 +1,1 @@
-allow rild sysfs:file write;
+allow rild calibrate_btm_sysfs_file:file rw_file_perms;
