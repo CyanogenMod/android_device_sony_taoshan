@@ -1,0 +1,6 @@
+type tad, domain;
+type tad_exec, exec_type, file_type;
+init_daemon_domain(tad)
+
+allow tad tad_static_exec:file entrypoint;
+allow tad ta_block_device:blk_file rw_file_perms;
