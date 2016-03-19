@@ -4,3 +4,4 @@ allow thermal-engine self:capability { dac_override net_admin chown };
 type_transition thermal-engine socket_device:sock_file thermal_socket;
 allow thermal-engine socket_device:dir w_dir_perms;
 allow thermal-engine thermal_socket:sock_file create_file_perms;
+allow thermal-engine calibrate_btm_sysfs_file:dir search;
