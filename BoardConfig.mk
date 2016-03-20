@@ -15,8 +15,6 @@
 # Inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
-USE_CAMERA_STUB := false
-
 # Architecture
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
@@ -47,11 +45,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1258291200
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1711276032
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 
-BOARD_VOLD_MAX_PARTITIONS := 33
-BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-
 TARGET_KERNEL_SOURCE := kernel/sony/msm8930
 TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 
@@ -70,8 +63,6 @@ BOARD_HAVE_NEW_QC_GPS := true
 
 TARGET_SPECIFIC_HEADER_PATH += device/sony/taoshan/include
 
-BOARD_RIL_NO_CELLINFOLIST := true
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
@@ -79,7 +70,6 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 QCOM_FM_ENABLED := true
 BOARD_USES_SEPERATED_FM := true
 TARGET_FM_LEGACY_PATCHLOADER := true
-QCOM_PROXY_DEVICE_ENABLED := true
 QCOM_USBAUDIO_ENABLED := true
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -87,8 +77,6 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-COMMON_GLOBAL_CFLAGS += -DSONY_CAM_PARAMS
 
 # Display HAL
 USE_OPENGL_RENDERER := true
@@ -115,8 +103,6 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/taoshan/bluetooth
 
-BOARD_RIL_NO_SEEK := true
-
 # Lights HAL
 TARGET_PROVIDES_LIBLIGHT := true
 
@@ -129,7 +115,6 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
-BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/taoshan/custombootimg.mk
 
@@ -145,9 +130,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_POWERHAL_NO_TOUCH_BOOST := true
 
 BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
-
-# Font expansion
-EXTENDED_FONT_FOOTPRINT := true
 
 # inherit qcom common sepolicies
 include device/qcom/sepolicy/sepolicy.mk
