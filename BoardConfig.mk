@@ -48,9 +48,6 @@ TARGET_KERNEL_CONFIG := cyanogenmod_taoshan_defconfig
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-# Bionic
-MALLOC_IMPL := dlmalloc
-
 # MMap compatibility
 BOARD_USES_LEGACY_MMAP := true
 
