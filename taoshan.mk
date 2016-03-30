@@ -59,6 +59,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/init.qcom.power.rc:root/init.qcom.power.rc \
     $(LOCAL_PATH)/rootdir/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
+# Bootlogo
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/root/logo.rle:root/logo.rle
+
 # QCOM init scripts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/init.qcom.sh:root/init.qcom.sh \
