@@ -19,9 +19,6 @@ TARGET_SCREEN_WIDTH := 480
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit common Sony resources
-$(call inherit-product, device/sony/common/resources.mk)
-
 # Inherit device config
 $(call inherit-product, device/sony/taoshan/taoshan.mk)
 
