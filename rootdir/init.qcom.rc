@@ -29,7 +29,6 @@ on init
     mkdir /persist 0771 system system
 
     # for backwards compatibility
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
     symlink /dev/socket /tmp
