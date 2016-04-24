@@ -27,8 +27,8 @@ on early-init
     mkdir /lta-label 0771 system system
 
 on init
-    # shim library for missing symbols in libqc-opt.so
-    export LD_SHIM_LIBS "/system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
+    # Symbols required for SONY blobs
+    export LD_SHIM_LIBS "/system/lib/hw/camera.vendor.msm8960.so|libshim_camera.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so"
 
     mkdir /persist 0771 system system
 
