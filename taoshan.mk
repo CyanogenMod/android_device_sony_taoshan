@@ -115,9 +115,9 @@ PRODUCT_PACKAGES += \
 
  # Camera
 PRODUCT_PACKAGES += \
-    camera.qcom
-
-PRODUCT_PACKAGES += libshim_qcopt
+    camera.qcom \
+    libshim_camera \
+    libshim_qcopt
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
