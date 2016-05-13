@@ -113,8 +113,9 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     libtinyxml
 
+ # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8960
+    camera.qcom
 
 PRODUCT_PACKAGES += libshim_qcopt
 
