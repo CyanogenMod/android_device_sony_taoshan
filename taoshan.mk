@@ -115,8 +115,7 @@ PRODUCT_PACKAGES += \
 
  # Camera
 PRODUCT_PACKAGES += \
-    camera.qcom \
-    Snap
+    camera.qcom
 
 PRODUCT_PACKAGES += libshim_qcopt
 
