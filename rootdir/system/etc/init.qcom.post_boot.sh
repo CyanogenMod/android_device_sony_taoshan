@@ -390,6 +390,5 @@ case "$target" in
 esac
 
 #fastrpc permission setting
-insmod /system/lib/modules/adsprpc.ko
 chown system.system /dev/adsprpc-smd
 chmod 666 /dev/adsprpc-smd
