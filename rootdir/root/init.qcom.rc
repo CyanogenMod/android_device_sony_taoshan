@@ -67,8 +67,6 @@ on fs
 
     # FOTA support
     class_start trimarea
-    exec /sbin/wait4tad_static
-    exec /sbin/fota-ua c
     exec /system/bin/taimport
 
 on post-fs
