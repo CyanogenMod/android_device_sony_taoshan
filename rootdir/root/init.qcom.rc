@@ -44,26 +44,8 @@ on fs
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/persist
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
-
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/ftmd
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/ftmd /ftmd nosuid nodev barrier=1
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/LTALabel
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/LTALabel /lta-label nosuid nodev barrier=1
-
-    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/ftma
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/ftma /ftma nosuid nodev barrier=1
     chmod 0750 /ftma/cci-flex.sh
     chmod 0750 /ftma/custom-flex.sh
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
     # FOTA support
     class_start trimarea
@@ -126,8 +108,9 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
-    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
+
+    start qcom-early_boot
+    start qcom-syspart_fixup
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -288,9 +271,9 @@ on boot
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
 
     # Post-setup services
-    exec /system/bin/rm /data/mpdecision/power_collapse
-    exec /system/bin/rm /data/mpdecision/standalone_power_collapse
-    exec /system/bin/rm -rf /data/mpdecision
+    rm /data/mpdecision/power_collapse
+    rm /data/mpdecision/standalone_power_collapse
+    rm -rf /data/mpdecision
     mkdir /data/mpdecision 0770 root system
     start mpdecision
 
@@ -300,7 +283,7 @@ on boot
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
@@ -356,7 +339,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -O/data/misc/wifi/sockets -d \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
@@ -464,6 +447,14 @@ service qcom-sh /system/bin/sh /init.qcom.sh
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     class late_start
     user root
+    disabled
+    oneshot
+
+service qcom-early_boot /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
+    disabled
+    oneshot
+
+service qcom-syspart_fixup /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
     disabled
     oneshot
 
