@@ -1,0 +1,4 @@
+type calibrate_btm_sysfs_file, file_type;
+type cci_tatest_exec, exec_type, file_type;
+type radio_files, file_type;
+type updatemiscta_exec, exec_type, file_type;
