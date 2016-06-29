@@ -1,4 +1,0 @@
-allow shell su:process signal;
-allow shell sysfs_thermal:dir search;
-allow shell sysfs_thermal:file { read open };
-allow shell tombstone_data_file:dir getattr;
