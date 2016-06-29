@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/sbin/tad_static:root/sbin/tad_static
+    $(LOCAL_PATH)/rootdir/system/bin/tad_static:system/bin/tad_static
 
 PRODUCT_PACKAGES += \
     charger_res_images \
