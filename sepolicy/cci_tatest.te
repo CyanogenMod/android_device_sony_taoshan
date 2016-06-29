@@ -1,0 +1,4 @@
+type cci_tatest, domain;
+type cci_tatest_exec, exec_type, file_type;
+
+init_daemon_domain(cci_tatest)

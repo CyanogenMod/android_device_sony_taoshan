@@ -1,0 +1,8 @@
+type tad_static, domain;
+type tad_exec, exec_type, file_type;
+type tad_socket, file_type;
+type tad_static_exec, exec_type, file_type;
+init_daemon_domain(tad_static)
+
+allow tad rootfs:file entrypoint;
+allow tad ta_block_device:blk_file rw_file_perms;
