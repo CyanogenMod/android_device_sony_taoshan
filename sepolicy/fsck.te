@@ -1,0 +1,4 @@
+allow fsck ftma_block_device:blk_file rw_file_perms;
+allow fsck ftmd_block_device:blk_file rw_file_perms;
+allow fsck lta_label_block_device:blk_file rw_file_perms;
+allow fsck persist_block_device:blk_file rw_file_perms;

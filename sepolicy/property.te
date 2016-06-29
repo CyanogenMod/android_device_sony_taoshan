@@ -1,0 +1,4 @@
+type ctl_location_mq, property_type;
+type ctl_lowi-server, property_type;
+type ctl_quipc_igsn_prop, property_type;
+type ctl_quipc_main, property_type;
