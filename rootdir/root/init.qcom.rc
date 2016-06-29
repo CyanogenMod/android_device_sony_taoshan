@@ -467,7 +467,7 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
+service tad_static /system/bin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
     class trimarea
     user root
     group root
