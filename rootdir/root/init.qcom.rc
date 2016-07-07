@@ -65,9 +65,6 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
-    # FOTA support
-    exec /system/bin/taimport
-
 on post-fs
     mkdir /dev/socket/suntory 0755 system system
 
@@ -488,6 +485,12 @@ service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,
     user root
     group root
     socket tad stream 0660 system system
+
+service taimport /system/bin/taimport
+    class late_start
+    user root
+    group system
+    oneshot
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
    user root
