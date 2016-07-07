@@ -37,8 +37,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # Media codecs
 PRODUCT_COPY_FILES += \
@@ -108,9 +107,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/sbin/tad_static:root/sbin/tad_static
 
 PRODUCT_PACKAGES += \
-    charger_res_images \
-    libnl_2 \
-    libtinyxml
+    charger_res_images
 
  # Camera
 PRODUCT_PACKAGES += \
@@ -138,15 +135,6 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-# Display
-PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libqdutils \
-    libtilerenderer \
-    libI420colorconvert
 
 # Lights wrapper
 PRODUCT_PACKAGES += \
@@ -202,8 +190,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
-    alsa.msm8960 \
-    audio_policy.msm8960 \
     audio.primary.msm8960 \
     audio.a2dp.default \
     audio.usb.default \
@@ -215,7 +201,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8960 \
     gralloc.msm8960 \
     copybit.msm8960 \
-    libqdMetaData \
     memtrack.msm8960
 
 # Wifi service
@@ -239,10 +224,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8960
 
-# Recovery
-PRODUCT_PACKAGES += \
-    keycheck
-
 # stlport
 PRODUCT_PACKAGES += \
     libstlport
@@ -255,7 +236,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
     persist.radio.apm_sim_not_pwdn=1 \
-    DEVICE_PROVISIONED=1 \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     telephony.lteOnCdmaDevice=0 \
@@ -263,8 +243,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=0 \
-    ro.cwm.enable_key_repeat=true \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
     ro.qualcomm.bt.hci_transport=smd \
@@ -289,13 +267,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # GPS-2
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qmienabled=true \
     ro.gps.agps_provider=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
-    ro.secure=1 \
-    ro.allow.mock.location=0 \
     ro.debuggable=1 \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1

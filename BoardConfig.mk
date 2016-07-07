@@ -100,7 +100,6 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB = device/sony/taoshan/rootdir/root/fstab.qcom
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/taoshan/custombootimg.mk
 
@@ -110,8 +109,6 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 RED_LED_PATH := /sys/class/leds/led:rgb_red/brightness
 GREEN_LED_PATH := /sys/class/leds/led:rgb_green/brightness
 BLUE_LED_PATH := /sys/class/leds/led:rgb_blue/brightness
-
-TARGET_POWERHAL_NO_TOUCH_BOOST := true
 
 BOARD_HARDWARE_CLASS := device/sony/taoshan/cmhw
 
