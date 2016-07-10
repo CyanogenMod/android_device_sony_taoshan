@@ -14,14 +14,21 @@
 # limitations under the License.
 #
 
-# Board device path
-DEVICE_PATH := device/sony/taoshan
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# Board device headers
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+# Device specific overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Board device elements
-include $(DEVICE_PATH)/board/*.mk
+# Product common configurations
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Board device vendor
--include vendor/sony/taoshan/BoardConfigVendor.mk
+# Dalvik heap configurations
+$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Device product elements
+include $(LOCAL_PATH)/product/*.mk
+
+# Vendor product configurations
+$(call inherit-product, vendor/sony/taoshan/taoshan-vendor.mk)
