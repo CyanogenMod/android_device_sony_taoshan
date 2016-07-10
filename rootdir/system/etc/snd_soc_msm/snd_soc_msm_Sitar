@@ -1343,7 +1343,7 @@ EndSection
 SectionVerb
         Name "Voice2PROXY Tx"
 
-        EnableSequen1e
+        EnableSequence
                 'AFE_PCM_RX_Voice Mixer Voice2':1:1
                 'Voice2_Tx Mixer AFE_PCM_TX_Voice2':1:1
         EndSequence
