@@ -152,7 +152,7 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-a3xx.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
-vendor/lib/libqc-opt.so
+vendor/lib/libqti-perfd-client.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
