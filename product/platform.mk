@@ -11,7 +11,3 @@ PRODUCT_COPY_FILES += \
 # Sony TrimArea package
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
-
-# Storage properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vold.primary_physical=1
