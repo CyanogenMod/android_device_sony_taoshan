@@ -1,0 +1,18 @@
+assert(getprop("ro.product.device") == "C2105" || getprop("ro.build.product") == "C2105" || getprop("ro.product.device") == "C2104" || getprop("ro.build.product") == "C2104" || getprop("ro.product.device") == "c2105" || getprop("ro.build.product") == "c2105" || getprop("ro.product.device") == "c2104" || getprop("ro.build.product") == "c2104" || getprop("ro.product.device") == "taoshan" || getprop("ro.build.product") == "taoshan" || abort("This package is for device: C2105,C2104,c2105,c2104,taoshan; this device is " + getprop("ro.product.device") + "."););
+
+package_extract_dir("install", "/tmp/install");
+set_metadata_recursive("/tmp/install/bin", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);
+set_metadata_recursive("/tmp/install/resize_userdata", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);
+
+if run_program("/tmp/install/resize_userdata/main.sh") == 22784 then
+  ui_print("UserData partition size was fixed");
+else
+  ui_print(" ");
+  ui_print("===============================");
+  ui_print(" The UserData partition failed");
+  ui_print("      to be fixed properly");
+  ui_print("===============================");
+  ui_print(" ");
+  sleep(5);
+  assert(abort("Please read the informations above..."););
+endif;
