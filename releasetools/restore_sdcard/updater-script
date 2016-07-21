@@ -1,0 +1,19 @@
+assert(getprop("ro.product.device") == "LT30p" || getprop("ro.build.product") == "LT30p" || getprop("ro.product.device") == "mint" || getprop("ro.build.product") == "mint" || getprop("ro.product.device") == "lt29i" || getprop("ro.build.product") == "lt29i" || getprop("ro.product.device") == "hayabusa" || getprop("ro.build.product") == "hayabusa" || getprop("ro.product.device") == "LT29i" || getprop("ro.build.product") == "LT29i" || getprop("ro.product.device") == "LT25i" || getprop("ro.build.product") == "LT25i" || getprop("ro.product.device") == "tsubasa" || getprop("ro.build.product") == "tsubasa" || abort("This package is for device: LT30p,mint,LT29i,lt29i,hayabusa,LT25i,tsubasa; this device is " + getprop("ro.product.device") + "."););
+
+package_extract_dir("install", "/tmp/install");
+set_metadata_recursive("/tmp/install/bin", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);
+set_metadata_recursive("/tmp/install/restore_sdcard", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);
+
+if run_program("/tmp/install/restore_sdcard/main.sh") == 22784 then
+  ui_print("Device already has a SDCard partition");
+  assert(abort("Restoring unnecessary..."););
+else
+  ui_print(" ");
+  ui_print("==================================");
+  ui_print(" The device failed to be reverted");
+  ui_print("   to physical SDCard partition");
+  ui_print("==================================");
+  ui_print(" ");
+  sleep(5);
+  assert(abort("Please read the informations above..."););
+endif;
