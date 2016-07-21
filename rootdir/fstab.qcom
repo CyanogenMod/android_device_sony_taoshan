@@ -19,6 +19,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/ftma           /ftma        ext4    nodev,barrier=1                                                                                       wait,check
 /dev/block/platform/msm_sdcc.1/by-name/modem          /firmware    vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0          wait
 
-/devices/platform/msm_sdcc.1/mmc_host/mmc0*           auto         auto    defaults                                                                                              voldmanaged=sdcard0:32,nonremovable,noemulatedsd
 /devices/platform/msm_sdcc.3/mmc_host*                auto         auto    nosuid,nodev                                                                                          voldmanaged=sdcard1:auto,encryptable=userdata
 /dev/block/zram0                                      none         swap    defaults                                                                                              zramsize=268435456,zramstreams=2,notrim
