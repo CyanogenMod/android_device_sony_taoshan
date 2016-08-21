@@ -15,3 +15,7 @@ PRODUCT_COPY_FILES += \
 # Storage properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.primary_physical=1
+
+# Updater properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.disable.recovery.updater=1
