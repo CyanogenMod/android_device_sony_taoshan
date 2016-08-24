@@ -20,4 +20,6 @@
 #define BTM_DEF_LOCAL_NAME   "Xperia L"
 #define BTA_DISABLE_DELAY 1000
 
+/* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
+#define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
 #endif
