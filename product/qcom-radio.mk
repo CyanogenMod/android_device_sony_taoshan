@@ -6,6 +6,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libtime_genoff
 
+# Telephony packages
+PRODUCT_PACKAGES += \
+    telephony-ext
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 # RIL properties
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
