@@ -8,10 +8,33 @@ uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
 	zcat $< > $@
 
+recovery_uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery.cpio
+recovery_uncompressed_device_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery-device.cpio
+$(recovery_uncompressed_device_ramdisk): $(MKBOOTFS) \
+		$(INTERNAL_RECOVERYIMAGE_FILES) \
+		$(recovery_initrc) $(recovery_sepolicy) $(recovery_kernel) \
+		$(INSTALLED_2NDBOOTLOADER_TARGET) \
+		$(recovery_build_prop) $(recovery_resource_deps) $(recovery_root_deps) \
+		$(recovery_fstab) \
+		$(RECOVERY_INSTALL_OTA_KEYS) \
+		$(INTERNAL_BOOTIMAGE_FILES)
+
+	@echo -e ${CL_CYN}"----- Making uncompressed recovery ramdisk ------"${CL_RST}
+	$(hide) cp $(DEVICE_LOGORLE) $(TARGET_RECOVERY_ROOT_OUT)/
+	$(hide) $(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $@
+	$(hide) rm -f $(recovery_uncompressed_ramdisk)
+	$(hide) cp $(recovery_uncompressed_device_ramdisk) $(recovery_uncompressed_ramdisk)
+
+recovery_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery.img
+$(recovery_ramdisk): $(MINIGZIP) \
+		$(recovery_uncompressed_device_ramdisk)
+	@echo -e ${CL_CYN}"----- Making compressed recovery ramdisk ------"${CL_RST}
+	$(hide) $(MINIGZIP) < $(recovery_uncompressed_ramdisk) > $@
+
 INSTALLED_BOOTIMAGE_TARGET := $(PRODUCT_OUT)/boot.img
 $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 		$(uncompressed_ramdisk) \
-		$(recovery_uncompressed_ramdisk) \
+		$(recovery_uncompressed_device_ramdisk) \
 		$(INSTALLED_RAMDISK_TARGET) \
 		$(INITSONY) \
 		$(PRODUCT_OUT)/utilities/toybox \
@@ -45,6 +68,5 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 		$(INSTALLED_BOOTIMAGE_TARGET) \
 		$(recovery_kernel)
 	@echo ----- Making recovery image ------
-	$(hide) $(MINIGZIP) < $(PRODUCT_OUT)/ramdisk-recovery.cpio > $(PRODUCT_OUT)/ramdisk-recovery.img
 	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_RECOVERYIMAGE_TARGET)
-	@echo ----- Made recovery image -------- $@
+@echo ----- Made recovery image -------- $@
