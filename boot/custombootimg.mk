@@ -4,6 +4,7 @@ DEVICE_BOOTDIR := device/sony/taoshan/boot
 DEVICE_LOGORLE := $(DEVICE_BOOTDIR)/logo.rle
 INITSONY := $(PRODUCT_OUT)/utilities/init_sony
 
+
 uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk.cpio
 $(uncompressed_ramdisk): $(INSTALLED_RAMDISK_TARGET)
 	zcat $< > $@
@@ -18,7 +19,7 @@ $(recovery_uncompressed_device_ramdisk): $(MKBOOTFS) \
 		$(recovery_fstab) \
 		$(RECOVERY_INSTALL_OTA_KEYS) \
 		$(INTERNAL_BOOTIMAGE_FILES)
-
+	$(call build-recoveryramdisk)
 	@echo -e ${CL_CYN}"----- Making uncompressed recovery ramdisk ------"${CL_RST}
 	$(hide) cp $(DEVICE_LOGORLE) $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) $(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $@
@@ -42,7 +43,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 		$(MKBOOTIMG) $(MINIGZIP) \
 		$(INTERNAL_BOOTIMAGE_FILES)
 
-	$(call pretty,"Boot image: $@")
+	@echo -e ${CL_CYN}"----- Making boot image ------"${CL_RST}
 	$(hide) rm -fr $(PRODUCT_OUT)/combinedroot
 	$(hide) cp -a $(PRODUCT_OUT)/root $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/sbin
@@ -58,15 +59,17 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 	$(hide) ln -s sbin/init_sony $(PRODUCT_OUT)/combinedroot/init
 
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/combinedroot/ > $(PRODUCT_OUT)/combinedroot.cpio
-	$(hide) cat $(PRODUCT_OUT)/combinedroot.cpio | $(MINIGZIP) > $(PRODUCT_OUT)/combinedroot.fs
+	$(hide) cat $(PRODUCT_OUT)/combinedroot.cpio | gzip > $(PRODUCT_OUT)/combinedroot.fs
 	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/combinedroot.fs --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_BOOTIMAGE_TARGET)
-
-	$(hide) ln -f $(INSTALLED_BOOTIMAGE_TARGET) $(PRODUCT_OUT)/boot.elf
+	
+	$(hide) ln -f $(INSTALLED_BOOTIMAGE_TARGET) $(PRODUCT_OUT)/boot.elf 
+	$(call pretty,"Made boot image: $@")
 
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
-		$(INSTALLED_BOOTIMAGE_TARGET) \
+		$(recovery_ramdisk) \
 		$(recovery_kernel)
-	@echo ----- Making recovery image ------
+	@echo -e ${CL_CYN}"----- Making recovery image ------"${CL_RST}
+	$(call build-recoveryimage-target, $@)
 	$(hide) $(MKBOOTIMG) --kernel $(PRODUCT_OUT)/kernel --ramdisk $(PRODUCT_OUT)/ramdisk-recovery.img --cmdline "$(BOARD_KERNEL_CMDLINE)" --base $(BOARD_KERNEL_BASE) --pagesize $(BOARD_KERNEL_PAGESIZE) $(BOARD_MKBOOTIMG_ARGS) -o $(INSTALLED_RECOVERYIMAGE_TARGET)
-@echo ----- Made recovery image -------- $@
+$(call pretty,"Made recovery image: $@")
