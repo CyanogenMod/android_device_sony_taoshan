@@ -127,6 +127,9 @@
          Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">true</bool>
 
+    <!-- Is the device capable of hot swapping an UICC Card -->
+    <bool name="config_hotswapCapable">true</bool>
+
     <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
