@@ -17,3 +17,7 @@ PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
     libmm-omxcore \
     libstagefrighthw
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
