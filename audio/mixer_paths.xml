@@ -448,15 +448,8 @@
     </path>
 
     <path name="camcorder-mic">
-        <ctl name="SLIM_0_TX Channels" value="Two" />
-        <ctl name="SLIM TX1 MUX" value="DEC1" />
-        <ctl name="DEC1 MUX" value="ADC1" />
-        <ctl name="SLIM TX5 MUX" value="DEC2" />
-        <ctl name="DEC2 MUX" value="ADC3" />
-        <ctl name="DEC1 Volume" value="82" />
-        <ctl name="ADC1 Volume" value="2" />
-        <ctl name="DEC2 Volume" value="82" />
-        <ctl name="ADC3 Volume" value="2" />
+       <path name="adc1" />
+       <ctl name="DEC1 Volume" value="91" />
     </path>
 
     <path name="hdmi-tx">
@@ -483,13 +476,15 @@
 
     <!-- Dual MIC devices -->
     <path name="dmic-endfire">
+        <ctl name="AIF1_CAP Mixer SLIM TX1" value="1" />
+        <ctl name="AIF1_CAP Mixer SLIM TX5" value="1" />
         <ctl name="SLIM TX1 MUX" value="DEC1" />
         <ctl name="DEC1 MUX" value="ADC1" />
-        <ctl name="ADC1 Volume" value="3" />
+        <ctl name="ADC1 Volume" value="100" />
         <ctl name="DEC1 Volume" value="91" />
-        <ctl name="SLIM TX5 MUX" value="DEC2" />
+        <ctl name="SLIM TX2 MUX" value="DEC2" />
         <ctl name="DEC2 MUX" value="ADC3" />
-        <ctl name="ADC3 Volume" value="3" />
+        <ctl name="ADC3 Volume" value="100" />
         <ctl name="DEC2 Volume" value="91" />
         <ctl name="SLIM_0_TX Channels" value="Two" />
     </path>
