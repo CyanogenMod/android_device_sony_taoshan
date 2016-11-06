@@ -1,4 +1,6 @@
 type mpdecision_data_file, dev_type;
 
-allow mpdecision mpctl_socket:sock_file create_file_perms;
-allow mpdecision mpdecision_socket:sock_file create_file_perms;
+allow mpdecision mpdecision_data_file:dir { add_name write };
+allow mpdecision mpctl_data_file:file { append open };
+allow mpdecision socket_device:sock_file setattr;
+
