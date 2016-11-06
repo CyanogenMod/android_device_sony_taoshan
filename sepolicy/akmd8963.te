@@ -3,4 +3,5 @@ type akmd8963_exec, exec_type, file_type;
 type akmd8963_device, dev_type;
 init_daemon_domain(akmd8963)
 
+allow akmd8963 system_data_file:dir { add_name write };
 allow akmd8963 akmd8963_device:chr_file rw_file_perms;

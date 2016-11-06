@@ -1,1 +1,0 @@
-allow dhcp kernel:system module_request;

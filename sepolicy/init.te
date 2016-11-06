@@ -1,7 +1,3 @@
 allow init fm_radio_device:chr_file write;
-allow init self:socket create_socket_perms;
-allow init smem_log_device:chr_file { write ioctl };
-allow init socket_device:sock_file { write setattr };
 allow init wcnss_device:chr_file write;
-allow init tad:unix_stream_socket connectto;
-allow init tad_socket:sock_file write;
+
