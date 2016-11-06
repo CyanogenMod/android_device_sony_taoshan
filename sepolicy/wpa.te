@@ -1,1 +1,0 @@
-allow wpa wifi_data_file:sock_file { create unlink setattr };
