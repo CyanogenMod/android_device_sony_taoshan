@@ -5,7 +5,6 @@ init_daemon_domain(ta_qmi_service)
 allow ta_qmi_service self:capability dac_override;
 allow ta_qmi_service self:socket rw_socket_perms;
 allow ta_qmi_service smem_log_device:chr_file rw_file_perms;
-allow ta_qmi_service sysfs_wake_lock:file rw_file_perms;
+allow ta_qmi_service sysfs_wake_lock:file { append open };
 allow ta_qmi_service tad:unix_stream_socket connectto;
-allow ta_qmi_service tad_socket:sock_file rw_file_perms;;
-allow ta_qmi_service self:socket create;
+allow ta_qmi_service tad_socket:sock_file rw_file_perms;

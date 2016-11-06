@@ -1,7 +1,5 @@
-allow qti_init_shell devpts:chr_file rw_file_perms;
-allow qti_init_shell bluetooth_data_file:file r_file_perms;
-
-allow qti_init_shell ctl_default_prop:property_service set;
-allow qti_init_shell ctl_location_mq_prop:property_service set;
-allow qti_init_shell ctl_lowi-server_prop:property_service set;
-allow qti_init_shell ctl_quipc_main_prop:property_service set;
+allow qti_init_shell sysfs_devices_system_cpu:file setattr;
+set_prop(qti_init_shell, ctl_default_prop)
+set_prop(qti_init_shell, ctl_location_mq_prop)
+set_prop(qti_init_shell, ctl_lowi-server_prop)
+set_prop(qti_init_shell, ctl_quipc_main_prop)

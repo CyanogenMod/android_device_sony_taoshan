@@ -1,3 +1,7 @@
 type cci_tatest, domain;
 type cci_tatest_exec, exec_type, file_type;
 init_daemon_domain(cci_tatest)
+
+allow cci_tatest self:capability dac_override;
+allow cci_tatest tad:unix_stream_socket connectto;
+allow cci_tatest tad_socket:sock_file write;
