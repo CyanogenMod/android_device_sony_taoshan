@@ -19,6 +19,7 @@
 /system/bin/updatemiscta                        u:object_r:updatemiscta_exec:s0
 
 # Files
+/data/etc/bluetooth_bdaddr                      u:object_r:taimport_data_file:s0
 /data/system/default_values                     u:object_r:mpctl_data_file:s0
 /persist/.bt_nv.bin                             u:object_r:bluetooth_data_file:s0
 /data/mpdecision/(./*)?                         u:object_r:mpdecision_data_file:s0

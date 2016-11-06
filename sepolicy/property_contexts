@@ -1,4 +1,5 @@
-ctl.location_mq           u:object_r:ctl_location_mq_prop:s0
-ctl.lowi-server           u:object_r:ctl_lowi-server_prop:s0
-ctl_quipc_igsn            u:object_r:ctl_quipc_igsn_prop:s0
-ctl.quipc_main            u:object_r:ctl_quipc_main_prop:s0
+ctl.location_mq                u:object_r:ctl_location_mq_prop:s0
+ctl.lowi-server                u:object_r:ctl_lowi-server_prop:s0
+ctl_quipc_igsn                 u:object_r:ctl_quipc_igsn_prop:s0
+ctl.quipc_main                 u:object_r:ctl_quipc_main_prop:s0
+persist.tareset.notfirstboot   u:object_r:persist_tareset_notfirstboot_prop:s0
