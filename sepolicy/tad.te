@@ -4,5 +4,6 @@ type tad_socket, file_type;
 type tad_static_exec, exec_type, file_type;
 init_daemon_domain(tad)
 
+allow tad proc:file { open read };
 allow tad rootfs:file entrypoint;
 allow tad ta_block_device:blk_file rw_file_perms;

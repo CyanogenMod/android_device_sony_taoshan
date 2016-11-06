@@ -1,1 +1,1 @@
-allow rild sysfs:file rw_file_perms;
+allow rild sysfs:file write;

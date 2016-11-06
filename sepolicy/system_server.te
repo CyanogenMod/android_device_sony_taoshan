@@ -1,1 +1,6 @@
+# System Server user.language property.
+set_prop(system_server, ctl_default_prop)
+
 allow system_server system_file:file execmod;
+allow system_server themeservice_app_data_file:dir relabelto;
+allow system_server unlabeled:file unlink;
