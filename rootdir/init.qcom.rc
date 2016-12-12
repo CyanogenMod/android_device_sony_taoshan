@@ -410,7 +410,7 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
 service tad_static /sbin/tad_static /dev/block/platform/msm_sdcc.1/by-name/TA 0,16
     class core
     user root
-    group root
+    group root readproc
     socket tad stream 0660 system system
     seclabel u:r:tad:s0
 
